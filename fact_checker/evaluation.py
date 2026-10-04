@@ -251,7 +251,7 @@ def save_report(results: Dict, reports_dir: Path) -> Dict[str, Path]:
         plt.close(fig)
 
     # ---- Ringkasan Markdown ----
-    lines = ["# Hasil Evaluasi Fact-Checker", ""]
+    lines = ["# Hasil Evaluasi Fact-Checker: IndoBERT & Entailment Verification", ""]
     if "nli" in results:
         lines += ["## 1. NLI dengan evidence emas", "",
                   "| Model | Accuracy | Macro-P | Macro-R | Macro-F1 | detik/pasangan |",

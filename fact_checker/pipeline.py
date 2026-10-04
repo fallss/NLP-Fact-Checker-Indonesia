@@ -2,10 +2,10 @@
 # pipeline.py
 # Orkestrator end-to-end: klaim -> retrieval -> NLI -> agregasi -> explainability
 #
-#   ┌────────────┐   ┌──────────────────────┐   ┌──────────────┐   ┌────────────┐
-#   │   Klaim    │──▶│ Hybrid Retrieval     │──▶│ NLI mDeBERTa │──▶│ Agregasi   │
-#   └────────────┘   │ BM25 + SBERT + RRF   │   │ (batch)      │   │ verdict    │
-#                    │ → passage selection  │   └──────────────┘   └─────┬──────┘
+#   ┌────────────┐   ┌──────────────────────┐   ┌──────────────────────┐   ┌────────────┐
+#   │   Klaim    │──▶│ Hybrid Retrieval     │──▶│ IndoBERT & NLI Verif │──▶│ Agregasi   │
+#   └────────────┘   │ BM25 + SBERT + RRF   │   │ (batch)              │   │ verdict    │
+#                    │ → passage selection  │   └──────────────────────┘   └─────┬──────┘
 #                    └──────────────────────┘                            ▼
 #                                                              ┌────────────────┐
 #                                                              │ SHAP (evidence │
