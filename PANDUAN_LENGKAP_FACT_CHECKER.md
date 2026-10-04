@@ -158,11 +158,18 @@ python -m fact_checker app
 
 ### Mode 2: Jupyter Notebook Interaktif
 Bagi Anda yang ingin melihat alur eksperimen, eksplorasi data (EDA), pembersihan teks, grafik evaluasi, hingga menjalankan Web App di dalam sel:
-1. Buka file [notebook_version/Fact_Checker_Full_Project.ipynb](file:///c:/Users/IFHAL%20FAIZI/Downloads/KULIAH/SEMESTER%207/NLP/Project%20UTS/notebook_version/Fact_Checker_Full_Project.ipynb) di VS Code atau Jupyter Lab.
-2. Pilih kernel `Python 3 (venv)`.
-3. Jalankan sel berurutan dari Bagian 1 hingga Bagian 13.
-4. Di **Bagian 8**, hasil verifikasi ditampilkan dalam bentuk teks terminal dan **kartu visual HTML** modern.
-5. Di **Bagian 12**, Anda dapat menjalankan antarmuka Gradio langsung di dalam notebook.
+
+> [!IMPORTANT]
+> **WAJIB MENGGUNAKAN PYTHON 3.10 UNTUK IPYNB!**  
+> Seluruh pustaka (PyTorch, Transformers, Sentence-Transformers, Gradio, SHAP, Scikit-learn, Pandas) dipasang secara khusus dan stabil di dalam virtual environment Python 3.10 (`venv`). Jangan menggunakan Python 3.12 atau versi Python global lainnya.
+
+**Langkah Memilih Kernel di VS Code:**
+1. Buka file [notebook_version/Fact_Checker_Full_Project.ipynb](file:///c:/Users/IFHAL%20FAIZI/Downloads/KULIAH/SEMESTER%207/NLP/Project%20UTS/notebook_version/Fact_Checker_Full_Project.ipynb) di VS Code.
+2. Klik indikator kernel di **pojok kanan atas** editor notebook (misalnya tertulis `Python 3.12` atau `Select Kernel`).
+3. Pilih **Python Environments...** → pilih kernel: **`Python 3.10.x ('venv': venv)`** (virtual environment proyek yang memiliki seluruh dependensi terpasang lengkap).
+4. Klik tombol **Restart Kernel** (ikon putar balik melingkar) lalu jalankan sel dari awal atau klik **Run All** (atau `Shift + Enter` per sel). Sel 7 kini akan memuat data secara lancar tanpa error `NotImplementedError`!
+5. Di **Bagian 8**, hasil verifikasi ditampilkan dalam bentuk teks terminal dan **kartu visual HTML** modern.
+6. Di **Bagian 12**, Anda dapat menjalankan antarmuka Gradio langsung di dalam output notebook.
 
 ---
 

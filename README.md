@@ -155,10 +155,16 @@ File notebook terletak di: [`notebook_version/Fact_Checker_Full_Project.ipynb`](
 Notebook ini berisi alur akademis menyeluruh: **EDA → Preprocessing → Hybrid Retrieval (BM25 + SBERT + RRF) → IndoBERT NLI → Agregasi FEVER → SHAP XAI → Evaluasi Kuantitatif → Web App tersemat**.
 
 #### Cara 1: Menggunakan VS Code (Paling Praktis)
-1. Buka folder project ini di **VS Code**.
-2. Buka file [`notebook_version/Fact_Checker_Full_Project.ipynb`](notebook_version/Fact_Checker_Full_Project.ipynb).
-3. Di pojok kanan atas jendela notebook, klik **Select Kernel** → pilih **Python Environments** → pilih kernel `Python 3.10.x ('venv': venv)`.
-4. Klik tombol **Run All** (atau jalankan sel satu per satu dari atas ke bawah menggunakan `Shift + Enter`).
+
+> [!IMPORTANT]
+> **WAJIB MENGGUNAKAN PYTHON 3.10 UNTUK IPYNB!**  
+> Seluruh pustaka (PyTorch, Transformers, Sentence-Transformers, Gradio, SHAP, Scikit-learn, Pandas) dipasang secara khusus dan stabil di dalam virtual environment Python 3.10 (`venv`). Jangan menggunakan Python 3.12 atau versi Python global lainnya.
+
+**Langkah Memilih Kernel di VS Code:**
+1. Buka file [`notebook_version/Fact_Checker_Full_Project.ipynb`](notebook_version/Fact_Checker_Full_Project.ipynb) di VS Code.
+2. Di pojok kanan atas jendela notebook, klik **indikator kernel** (misalnya tertulis `Python 3.12` atau `Select Kernel`).
+3. Pilih **Python Environments...** → pilih kernel: **`Python 3.10.x ('venv': venv)`** (virtual environment proyek yang memiliki seluruh dependensi terpasang lengkap).
+4. Klik tombol **Restart Kernel** (ikon putar balik melingkar) lalu jalankan sel dari awal atau klik **Run All** (atau `Shift + Enter` per sel). Sel 7 kini akan memuat data secara lancar tanpa error `NotImplementedError`!
 5. Di **Bagian 8**, hasil verifikasi akan langsung muncul dalam bentuk tabel terminal dan **kartu visual HTML**.
 6. Di **Bagian 12**, Web App Gradio akan langsung aktif dan interaktif di dalam output sel notebook!
 

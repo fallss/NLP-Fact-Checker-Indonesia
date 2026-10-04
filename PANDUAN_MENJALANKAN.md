@@ -167,18 +167,23 @@ Notebook ini dirancang sistematis mencakup 13 bagian:
 
 ### Cara 1: Menggunakan Visual Studio Code (Sangat Disarankan)
 
+> [!IMPORTANT]
+> **WAJIB MENGGUNAKAN PYTHON 3.10 UNTUK IPYNB!**  
+> Seluruh pustaka (PyTorch, Transformers, Sentence-Transformers, Gradio, SHAP, Scikit-learn, Pandas) dipasang secara khusus dan stabil di dalam virtual environment Python 3.10 (`venv`). Jangan menggunakan Python 3.12 atau versi Python global lainnya karena dapat menyebabkan ketidakcocokan dependensi dan error `NotImplementedError` saat deserialisasi data.
+
+#### Langkah Memilih Kernel di VS Code:
+Ketika membuka [`notebook_version/Fact_Checker_Full_Project.ipynb`](notebook_version/Fact_Checker_Full_Project.ipynb) di VS Code:
+
 1. **Buka Project di VS Code**:
-   - Buka folder `Project UTS` di VS Code.
-2. **Buka File Notebook**:
-   - Klik file `notebook_version/Fact_Checker_Full_Project.ipynb` di panel Explorer.
-3. **Pilih Kernel Virtual Environment**:
-   - Di sudut kanan atas jendela notebook, klik tombol **Select Kernel** (atau ganti kernel).
-   - Pilih opsi **Python Environments...**
-   - Pilih kernel dari virtual environment proyek: `Python 3.10.x ('venv': venv)`.
-4. **Eksekusi Sel**:
-   - **Menjalankan Seluruh Notebook**: Klik tombol **Run All** di baris toolbar atas.
-   - **Menjalankan Sel Tertentu**: Klik tombol **Play (▶)** di samping kiri sel, atau gunakan shortcut `Shift + Enter`.
-5. **Melihat Hasil Interaktif**:
+   - Buka folder `Project UTS` di VS Code, lalu klik file `notebook_version/Fact_Checker_Full_Project.ipynb` di panel Explorer.
+2. **Pilih Kernel Virtual Environment**:
+   - Klik indikator kernel di **pojok kanan atas** editor notebook (misalnya tertulis `Python 3.12` atau `Select Kernel`).
+   - Pilih **Python Environments...**
+   - Pilih kernel: **`Python 3.10.x ('venv': venv)`** (virtual environment proyek yang memiliki seluruh dependensi terpasang lengkap).
+3. **Restart Kernel & Jalankan**:
+   - Klik tombol **Restart Kernel** (ikon putar balik melingkar) lalu jalankan sel dari awal atau klik **Run All** (atau gunakan shortcut `Shift + Enter`).
+   - **Hasil**: Sel 7 kini akan memuat data secara lancar tanpa error `NotImplementedError`!
+4. **Melihat Hasil Interaktif**:
    - Di **Bagian 8**, kartu verifikasi HTML modern akan langsung ter-render di dalam output sel.
    - Di **Bagian 12**, antarmuka Web App Gradio akan langsung hidup dan dapat digunakan langsung di dalam notebook.
 
