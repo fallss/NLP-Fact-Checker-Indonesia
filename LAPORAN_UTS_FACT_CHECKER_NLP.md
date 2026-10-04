@@ -1,14 +1,14 @@
 # 📘 LAPORAN PROYEK UTS — NATURAL LANGUAGE PROCESSING (SEMESTER 7)
 
-# Indonesian News Fact-Checker: Retrieval-Augmented Natural Language Inference dengan Explainable AI
+# Fact-Checker Berita Berbahasa Indonesia Menggunakan IndoBERT dan Entailment Verification (NLI)
 
 ---
 
 | Identitas Proyek | Keterangan |
 |---|---|
 | **Mata Kuliah** | Natural Language Processing (NLP) — Semester 7 |
-| **Topik Proyek** | Automated Fact-Checking & Fake News Detection Berbahasa Indonesia |
-| **Metode Utama** | Hybrid Retrieval (Okapi BM25 + SBERT + RRF) → Passage Selection → Multilingual NLI (mDeBERTa-v3) → FEVER-style Aggregation → Explainable AI (SHAP) |
+| **Topik Proyek** | Fact-Checker Menggunakan IndoBERT dan Entailment Verification (NLI) |
+| **Metode Utama** | IndoBERT NLI & Entailment Verification (IndoNLI / mDeBERTa-v3) → Hybrid Retrieval (BM25 + SBERT + RRF) → Passage Selection → FEVER-style Max Aggregation → Explainable AI (SHAP) |
 | **Korpus Berita** | 32.000 artikel berita bersih dari 7 portal nasional terpercaya (Maret–April 2023) |
 | **Antarmuka** | Modern Web App (Gradio Glassmorphism), Jupyter Notebook Interaktif, dan Terminal CLI (`rich`) |
 | **Repositori & Paket** | Modular Python Package `fact_checker/` |
@@ -18,12 +18,12 @@
 ## DAFTAR ISI
 1. [Ringkasan Eksekutif (Executive Summary)](#1-ringkasan-eksekutif-executive-summary)
 2. [Latar Belakang & Rumusan Masalah](#2-latar-belakang--rumusan-masalah)
-3. [Arsitektur & Landasan Teori Sistem (FEVER Paradigm)](#3-arsitektur--landasan-teori-sistem-fever-paradigm)
+3. [Arsitektur & Landasan Teori Sistem (IndoBERT & FEVER Paradigm)](#3-arsitektur--landasan-teori-sistem-indobert--fever-paradigm)
 4. [Eksplorasi Korpus Data & Preprocessing](#4-eksplorasi-korpus-data--preprocessing)
 5. [Bedah Komponen Sistem (Step-by-Step Implementation)](#5-bedah-komponen-sistem-step-by-step-implementation)
    - [Tahap 1: Hybrid Document Retrieval (BM25 + SBERT + RRF)](#tahap-1-hybrid-document-retrieval-bm25--sbert--rrf)
    - [Tahap 2: Passage Selection (Sliding Window & Cosine Semantic Rank)](#tahap-2-passage-selection-sliding-window--cosine-semantic-rank)
-   - [Tahap 3: Natural Language Inference (Cross-Lingual mDeBERTa-v3)](#tahap-3-natural-language-inference-cross-lingual-mdeberta-v3)
+   - [Tahap 3: IndoBERT & Entailment Verification (NLI)](#tahap-3-indobert--entailment-verification-nli)
    - [Tahap 4: Agregasi Multi-Evidence (FEVER-style Max + Gerbang Relevansi)](#tahap-4-agregasi-multi-evidence-fever-style-max--gerbang-relevansi)
    - [Tahap 5: Explainable AI / XAI (SHAP Partition Saliency)](#tahap-5-explainable-ai--xai-shap-partition-saliency)
 6. [Desain Antarmuka Modern & Integrasi Sistem](#6-desain-antarmuka-modern--integrasi-sistem)
@@ -83,27 +83,28 @@ Sistem ini dirancang mengikuti paradigma ilmiah **FEVER (Fact Extraction and VER
            └──▶│ Sentence-BERT Dense Embedding (Judul + Ringk) ──┘    RRF(d) = Σ 1/(60+r)  │    Relevan
                └────────────────────────────────────────────────────────────┬─────────────┘
                                                                             ▼
-               ┌──── TAHAP 2: PASSAGE SELECTION ────┐    ┌──── TAHAP 3: NATURAL LANGUAGE INFERENCE ──┐
-               │ Segmentasi Kalimat Sadar Singkatan │───▶│ Cross-Encoder mDeBERTa-v3 Multilingual   │
-               │ Sliding Window 3 Kalimat           │    │ Batch Processing Premis-Hipotesis         │
-               │ Pemeringkatan Cosine Similarity    │    │ Softmax Logits: P(E), P(N), P(C)          │
-               └────────────────────────────────────┘    └──────────────────┬────────────────────────┘
+               ┌──── TAHAP 2: PASSAGE SELECTION ────┐    ┌──── TAHAP 3: INDOBERT & ENTAILMENT VERIFICATION ──┐
+               │ Segmentasi Kalimat Sadar Singkatan │───▶│ Cross-Encoder IndoBERT NLI / mDeBERTa-v3         │
+               │ Sliding Window 3 Kalimat           │    │ Batch Processing Premis-Hipotesis                │
+               │ Pemeringkatan Cosine Similarity    │    │ Softmax Logits: P(E), P(N), P(C)                 │
+               └────────────────────────────────────┘    └──────────────────┬───────────────────────────────┘
                                                                             ▼
-               ┌──── TAHAP 5: EXPLAINABILITY (XAI) ─┐    ┌──── TAHAP 4: AGREGASI VERDICT ────────────┐
-               │ SHAP Partition Explainer           │◀───│ Filter Gerbang Relevansi (Relevance ≥ 0.35│
-               │ Saliency Token Attribution         │    │ P_max(E) ≥ 0.60 ──▶ DIDUKUNG FAKTA        │
-               │ Tooltip Skor & Highlight Visual    │    │ P_max(C) ≥ 0.60 ──▶ BERTENTANGAN / HOAKS  │
-               └────────────────────────────────────┘    │ Else            ──▶ BUKTI TIDAK CUKUP     │
-                                                         └───────────────────────────────────────────┘
+               ┌──── TAHAP 5: EXPLAINABILITY (XAI) ─┐    ┌──── TAHAP 4: AGREGASI VERDICT ───────────────────┐
+               │ SHAP Partition Explainer           │◀───│ Filter Gerbang Relevansi (Relevance ≥ 0.35)      │
+               │ Saliency Token Attribution         │    │ P_max(E) ≥ 0.60 ──▶ DIDUKUNG FAKTA               │
+               │ Tooltip Skor & Highlight Visual    │    │ P_max(C) ≥ 0.60 ──▶ BERTENTANGAN / HOAKS         │
+               └────────────────────────────────────┘    │ Else            ──▶ BUKTI TIDAK CUKUP            │
+                                                         └──────────────────────────────────────────────────┘
 ```
 
 ### Landasan Teori Komponen:
-1. **Reciprocal Rank Fusion (Cormack et al., 2009)**: Menggabungkan hasil pemeringkatan dari sistem temu balik yang berbeda tanpa memerlukan kalibrasi skor mentah:
+1. **IndoBERT (Koto et al., 2020) & IndoNLI (Mahendra et al., 2021)**: IndoBERT adalah model representasi bahasa pra-latih berbasis arsitektur Transformer yang dilatih secara khusus pada lebih dari 4 miliar kata korpus teks bahasa Indonesia (Indo4B). Untuk tugas inferensi, model diadaptasi dan di-*fine-tune* pada dataset IndoNLI (`LazarusNLP/indobert-lite-base-p1-indonli-multilingual-nli-distil-mdeberta`), memungkinkannya mengidentifikasi relasi logis (*entailment*, *contradiction*, *neutral*) antara klaim dan bukti berita berbahasa Indonesia secara mendalam.
+2. **Entailment Verification Framework**: Paradigma verifikasi klaim di mana sebuah klaim berita dinyatakan valid jika terdapat bukti yang memiliki relasi keterikatan logis (*entailment*) kuat, dan dinyatakan hoaks jika bukti memiliki relasi kontradiksi (*contradiction*).
+3. **Reciprocal Rank Fusion (Cormack et al., 2009)**: Menggabungkan hasil pemeringkatan dari sistem temu balik yang berbeda tanpa memerlukan kalibrasi skor mentah:
    $$RRF(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
    di mana $k = 60$ adalah konstanta peredam (*smoothing constant*) dan $r_m(d)$ adalah peringkat dokumen $d$ pada metode $m$.
-2. **Disentangled Attention DeBERTa (He et al., 2021)**: Memisahkan representasi isi (*content*) dan posisi relatif (*relative position*) pada setiap token, meningkatkan akurasi inferensi linguistik.
-3. **Cross-Lingual Natural Language Inference (Laurer et al., 2022)**: Model `mDeBERTa-v3` yang telah dilatih pada 27 bahasa (termasuk bahasa Indonesia via XNLI) mampu mengenali kontradiksi faktual secara lintas bahasa tanpa terjemahan mesin.
-4. **Shapley Additive Explanations (Lundberg & Lee, 2017)**: Mengukur kontribusi marjinal setiap token terhadap pergeseran nilai probabilitas prediksi model.
+4. **Cross-Lingual NLI via DeBERTa-v3 (He et al., 2021; Laurer et al., 2022)**: Menyediakan dukungan penalaran silang bahasa (*cross-lingual transfer*) tingkat lanjut dengan arsitektur *disentangled attention* untuk mengantisipasi istilah serapan dan entitas global.
+5. **Shapley Additive Explanations (Lundberg & Lee, 2017)**: Mengukur kontribusi marjinal setiap token terhadap pergeseran nilai probabilitas prediksi model.
 
 ---
 
@@ -150,13 +151,19 @@ Sebuah artikel berita utuh rata-rata memiliki 300–600 kata, melampaui batas re
 2. Setiap passage di-encode dan diukur nilai cosine similarity-nya terhadap klaim input.
 3. Sistem menyaring dan memilih **Top-5 passages** tertinggi di seluruh artikel terambil sebagai representasi premis bukti.
 
-### Tahap 3: Natural Language Inference (Cross-Lingual mDeBERTa-v3)
+### Tahap 3: IndoBERT & Entailment Verification (NLI)
 Terletak pada modul [nli_model.py](file:///c:/Users/IFHAL%20FAIZI/Downloads/KULIAH/SEMESTER%207/NLP/Project%20UTS/fact_checker/nli_model.py).
-- Model: `MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7` (860 MB, 12 layers, 768 hidden units).
-- Pasangan premis (passage bukti) dan hipotesis (klaim) disusun ke dalam format:
+- **Model Utama**: `LazarusNLP/indobert-lite-base-p1-indonli-multilingual-nli-distil-mdeberta` (IndoBERT yang di-fine-tune pada dataset IndoNLI) serta model Cross-Lingual NLI `MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7`.
+- **Mekanisme Pasangan Premis-Hipotesis**:
+  Pasangan premis (passage bukti berita) dan hipotesis (klaim pengguna) disusun ke dalam format input Transformer:
   $$\text{[CLS]} \; \text{Premis (Bukti)} \; \text{[SEP]} \; \text{Hipotesis (Klaim)} \; \text{[SEP]}$$
-- Model dieksekusi secara *batch* untuk efisiensi komputasi, menghasilkan distribusi probabilitas terkalibrasi melalui fungsi Softmax:
+- **Verifikasi Entailment 3-Kelas**:
+  Model menghasilkan distribusi probabilitas terkalibrasi melalui fungsi Softmax:
   $$P(\text{Entailment}), \quad P(\text{Neutral}), \quad P(\text{Contradiction})$$
+  - **Entailment**: Bukti berita secara logis membenarkan dan mendukung klaim input.
+  - **Contradiction**: Bukti berita bertentangan secara langsung dengan klaim input (indikasi hoaks/disinformasi).
+  - **Neutral**: Bukti berita membicarakan topik serupa tetapi tidak memiliki cukup relasi logis untuk membuktikan atau membantah klaim.
+- **Resilient Fallback Mechanism**: Jika koneksi jaringan terbatas atau model IndoBERT sedang diunduh, sistem secara otomatis memanfaatkan bobot lokal `mDeBERTa-v3` yang sudah tersimpan di cache HuggingFace, menjamin *zero downtime* pada aplikasi.
 
 ### Tahap 4: Agregasi Multi-Evidence (FEVER-style Max + Gerbang Relevansi)
 Terletak pada modul [aggregation.py](file:///c:/Users/IFHAL%20FAIZI/Downloads/KULIAH/SEMESTER%207/NLP/Project%20UTS/fact_checker/aggregation.py).
@@ -303,3 +310,4 @@ Berdasarkan 16 kesalahan prediksi pada pengujian end-to-end, diidentifikasi pola
 7. **Cormack, G. V., Clarke, C. L., & Büttcher, S.** (2009). *Reciprocal rank fusion outperforms Condorcet and individual rank learning methods.* Proceedings of the 32nd international ACM SIGIR conference on Research and development in information retrieval.
 8. **Lundberg, S. M., & Lee, S. I.** (2017). *A unified approach to interpreting model predictions.* Advances in Neural Information Processing Systems (NeurIPS 2017).
 9. **Mahendra, R., Aji, A. F., Louvan, S., Rahman, F., & Vania, C.** (2021). *IndoNLI: A Natural Language Inference Dataset for Indonesian.* Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP).
+10. **Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T.** (2020). *IndoLEM and IndoBERT: A Benchmark Dataset and Pre-trained Language Model for Indonesian NLP.* Proceedings of the 28th International Conference on Computational Linguistics (COLING 2020).

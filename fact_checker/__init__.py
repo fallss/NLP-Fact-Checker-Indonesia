@@ -4,7 +4,7 @@ Indonesian News Fact-Checker
 
 Pipeline verifikasi klaim berbahasa Indonesia:
 hybrid retrieval (BM25 + Sentence-BERT + RRF) → passage selection →
-NLI multilingual (mDeBERTa-v3) → agregasi multi-evidence → SHAP.
+IndoBERT & Entailment Verification (NLI) → agregasi multi-evidence → SHAP.
 
 Penggunaan cepat::
 

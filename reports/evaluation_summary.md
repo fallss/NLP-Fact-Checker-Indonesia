@@ -1,4 +1,4 @@
-# Hasil Evaluasi Fact-Checker
+# Hasil Evaluasi Fact-Checker: IndoBERT & Entailment Verification
 
 ## 1. NLI dengan evidence emas
 

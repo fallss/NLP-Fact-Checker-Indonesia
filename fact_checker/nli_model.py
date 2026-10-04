@@ -1,18 +1,17 @@
 # =============================================================================
 # nli_model.py
-# Natural Language Inference (NLI) untuk verifikasi klaim.
+# IndoBERT & Entailment Verification (NLI) untuk verifikasi klaim berita.
 #
-#   Premise    = passage evidence dari berita
+#   Premise    = passage evidence dari korpus berita
 #   Hypothesis = klaim pengguna
 #
-#   ENTAILMENT    -> evidence mendukung klaim
-#   CONTRADICTION -> evidence bertentangan dengan klaim
-#   NEUTRAL       -> evidence tidak cukup untuk memutuskan
+#   ENTAILMENT    -> evidence secara logis mendukung kebenaran klaim
+#   CONTRADICTION -> evidence bertentangan dengan klaim (indikasi hoaks)
+#   NEUTRAL       -> evidence tidak cukup untuk membuktikan/membantah
 #
-# Model default: mDeBERTa-v3-base (multilingual) yang di-fine-tune pada XNLI dan
-# multilingual-NLI-26lang-2mil7 — dataset NLI 27 bahasa yang mencakup bahasa
-# Indonesia. Versi lama project memakai cross-encoder/nli-MiniLM2-L6-H768 yang
-# hanya dilatih pada data bahasa Inggris (lihat evaluasi ablasi di laporan).
+# Model didesain mengutamakan IndoBERT NLI (LazarusNLP/indobert-lite-base-p1-indonli)
+# yang dilatih pada benchmark IndoNLI, dengan dukungan cross-lingual mDeBERTa-v3
+# yang mencakup data XNLI bahasa Indonesia.
 # =============================================================================
 
 from __future__ import annotations
@@ -24,7 +23,14 @@ import numpy as np
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-from fact_checker.config import NLI_LABELS, NLI_MODEL, NLI_MODEL_BASELINE, resolve_device
+from fact_checker.config import (
+    NLI_LABELS,
+    NLI_MODEL,
+    NLI_MODEL_BASELINE,
+    NLI_MODEL_INDOBERT,
+    NLI_MODEL_MDEBERTA,
+    resolve_device,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +54,7 @@ def normalize_label(label: str) -> str:
 
 
 class NLIModel:
-    """Cross-encoder NLI dengan inferensi batch."""
+    """Cross-encoder NLI (IndoBERT / Multilingual NLI) dengan inferensi batch."""
 
     def __init__(
         self,
@@ -63,11 +69,16 @@ class NLIModel:
         self.batch_size = batch_size
         try:
             self._load(model_name)
-        except Exception as exc:  # jaringan putus / model tidak ditemukan
+        except Exception as exc:  # jaringan putus / model belum ter-download
             if not allow_fallback or model_name == NLI_MODEL_BASELINE:
                 raise
-            logger.warning("Gagal memuat %s (%s). Beralih ke %s.", model_name, exc, NLI_MODEL_BASELINE)
-            self._load(NLI_MODEL_BASELINE)
+            # Coba fallback ke model multilingual ter-cache (mDeBERTa), lalu baseline
+            fallback = NLI_MODEL_MDEBERTA if model_name != NLI_MODEL_MDEBERTA else NLI_MODEL_BASELINE
+            logger.warning("Gagal memuat %s (%s). Beralih ke fallback ter-cache %s.", model_name, exc, fallback)
+            try:
+                self._load(fallback)
+            except Exception:
+                self._load(NLI_MODEL_BASELINE)
 
     def _load(self, model_name: str) -> None:
         logger.info("Memuat model NLI: %s (device=%s)", model_name, self.device)

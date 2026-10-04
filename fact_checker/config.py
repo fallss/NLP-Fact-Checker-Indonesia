@@ -18,18 +18,22 @@ from typing import Optional
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # -----------------------------------------------------------------------------
-# Model
+# Model: IndoBERT & Entailment Verification (NLI)
 # -----------------------------------------------------------------------------
-# Model embedding multilingual (mendukung bahasa Indonesia) untuk semantic search.
+# Model embedding semantic retrieval (mendukung bahasa Indonesia)
 EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
-# Model NLI multilingual: mDeBERTa-v3 yang di-fine-tune pada XNLI +
-# multilingual-NLI-26lang-2mil7 (2,7 juta pasangan NLI, termasuk bahasa Indonesia).
-NLI_MODEL = "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7"
+# Model IndoBERT NLI (IndoBERT yang di-fine-tune pada dataset IndoNLI)
+NLI_MODEL_INDOBERT = "LazarusNLP/indobert-lite-base-p1-indonli-multilingual-nli-distil-mdeberta"
 
-# Model baseline versi lama (hanya dilatih pada data bahasa Inggris SNLI/MNLI).
-# Disimpan untuk keperluan studi ablasi / perbandingan di laporan.
+# Model Multilingual NLI (mDeBERTa-v3 cross-lingual XNLI 27 bahasa termasuk Indonesia)
+NLI_MODEL_MDEBERTA = "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7"
+
+# Model baseline versi lama (English-only SNLI/MNLI)
 NLI_MODEL_BASELINE = "cross-encoder/nli-MiniLM2-L6-H768"
+
+# Model NLI default: mengutamakan IndoBERT / mDeBERTa SOTA untuk bahasa Indonesia
+NLI_MODEL = NLI_MODEL_INDOBERT
 
 # Label NLI standar yang dipakai di seluruh project
 NLI_LABELS = ("ENTAILMENT", "NEUTRAL", "CONTRADICTION")

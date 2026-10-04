@@ -1,10 +1,10 @@
-# 📖 PANDUAN LENGKAP SISTEM — INDONESIAN NEWS FACT-CHECKER v2.0
+# 📖 PANDUAN LENGKAP SISTEM — INDONESIAN NEWS FACT-CHECKER: INDOBERT & ENTAILMENT VERIFICATION (NLI)
 ### Panduan Praktis Arsitektur, Cara Kerja, dan Penggunaan untuk Pengembang & Pengguna
 
 ---
 
 > [!NOTE]
-> Panduan ini disusun untuk membantu siapa pun (dosen, penguji, rekan tim, maupun pengguna baru) memahami cara kerja sistem **Indonesian News Fact-Checker** dari tingkat konsep hingga eksekusi teknis langkah-demi-langkah.
+> Panduan ini disusun untuk membantu siapa pun (dosen, penguji, rekan tim, maupun pengguna baru) memahami cara kerja sistem **Indonesian News Fact-Checker** berbasis **IndoBERT dan Entailment Verification (NLI)** dari tingkat konsep hingga eksekusi teknis langkah-demi-langkah.
 
 ---
 
@@ -33,7 +33,7 @@ Di era informasi digital, hoaks dan disinformasi menyebar dalam hitungan menit d
 Sistem ini bertindak layaknya seorang **jurnalis pemeriksa fakta digital (*automated fact-checker*)**:
 1. **Menerima Klaim**: Pengguna memasukkan sebuah klaim berita bahasa Indonesia (misal: *"Presiden Jokowi melarang Wapres Ma'ruf Amin mengunjungi lokasi kebakaran Plumpang"*).
 2. **Mencari Bukti (*Retrieval*)**: Sistem secara kilat menyisir **32.000 artikel berita** dari 7 media nasional tepercaya (Detik, Kompas, Tempo, CNN Indonesia, Republika, Antara, Kumparan) untuk mencari artikel dan potongan kalimat (*passages*) yang paling relevan.
-3. **Menganalisis Hubungan Logika (*NLI*)**: Menggunakan model kecerdasan buatan canggih **mDeBERTa-v3 Multilingual**, sistem membandingkan klaim dengan kalimat bukti:
+3. **Menganalisis Hubungan Logika (*IndoBERT & Entailment Verification*)**: Menggunakan model Transformer bahasa Indonesia **IndoBERT NLI** (di-fine-tune pada benchmark IndoNLI) serta dukungan model cross-lingual, sistem membandingkan klaim dengan kalimat bukti:
    - Apakah bukti **mendukung** klaim? (*Entailment*)
    - Apakah bukti **membantah** klaim? (*Contradiction*)
    - Atau berita **tidak cukup membahas** klaim tersebut? (*Neutral*)
@@ -79,9 +79,9 @@ Mari kita bedah apa yang terjadi di balik layar saat Anda menekan tombol **"⚡ 
                         │
                         ▼
  ┌─────────────────────────────────────────────────────────────────────────────┐
- │ 4. NATURAL LANGUAGE INFERENCE / NLI (Inferensi Logika)                      │
- │    Model mDeBERTa-v3 membaca [Premis: Bukti] dan [Hipotesis: Klaim].        │
- │    Menghasilkan 3 probabilitas untuk setiap passage:                        │
+ │ 4. INDOBERT & ENTAILMENT VERIFICATION (NLI) (Inferensi Logika)              │
+ │    Model IndoBERT NLI / mDeBERTa-v3 membaca [Premis: Bukti] dan             │
+ │    [Hipotesis: Klaim]. Menghasilkan 3 probabilitas untuk setiap passage:    │
  │    P(Entailment), P(Neutral), P(Contradiction).                             │
  └──────────────────────┬──────────────────────────────────────────────────────┘
                         │
@@ -224,7 +224,7 @@ Antarmuka web telah dirancang dengan standar desain tinggi (*Modern Glassmorphic
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │  🔎 INDONESIAN NEWS FACT-CHECKER v2.0                                  │ ◄── Header Hero (Glassmorphic)
-│  32.000 Artikel Bersih · 7 Portal Berita · mDeBERTa-v3 Multilingual    │ ◄── Status Chips Korpus
+│  32.000 Artikel Bersih · 7 Portal Berita · IndoBERT & Entailment Verif │ ◄── Status Chips Korpus
 └────────────────────────────────────────────────────────────────────────┘
 │                                                                        │
 │  [ Input Kotak Teks Klaim                                            ] │ ◄── Tempat mengetik klaim
@@ -311,7 +311,7 @@ Project UTS/
 │   ├── schemas.py                Definisi struktur data dataclass (FactCheckResult, Evidence)
 │   ├── preprocessing.py          Pembersihan boilerplate media & segmentasi kalimat
 │   ├── retrieval.py              Modul BM25, Sentence-BERT, RRF fusion, & passage window
-│   ├── nli_model.py              Modul inferensi mDeBERTa-v3 batch dengan softmax
+│   ├── nli_model.py              Modul inferensi IndoBERT & Entailment Verification (NLI)
 │   ├── aggregation.py            Logika agregasi verdict (Max Pooling + Relevance Gate)
 │   ├── explainability.py         Modul SHAP Partition Explainer & saliency visualizer
 │   ├── pipeline.py               Orkestrator FactChecker yang merangkai Tahap 1 hingga 5
@@ -330,8 +330,9 @@ Project UTS/
 ├── tests/                        Unit testing otomatis menggunakan pytest
 ├── requirements.txt              Daftar dependensi pustaka Python
 ├── sync_notebook.py              Skrip sinkronisasi aman antara package .py dan .ipynb
-├── Laporan_UTS_NLP.md            Laporan resmi akademis proyek UTS NLP
-├── PANDUAN_SISTEM.md             Panduan praktis arsitektur & penggunaan sistem (file ini)
+├── LAPORAN_UTS_FACT_CHECKER_NLP.md Laporan resmi akademis proyek UTS NLP
+├── PANDUAN_LENGKAP_FACT_CHECKER.md Panduan praktis arsitektur & penggunaan sistem (file ini)
+├── PANDUAN_PENGUJIAN_KLAIM.md    Panduan ringkas pengujian dan skenario uji klaim
 └── README.md                     Dokumentasi ringkas beranda repositori
 ```
 
@@ -340,7 +341,7 @@ Project UTS/
 ## 8. Pertanyaan Umum (FAQ) & Pemecahan Masalah
 
 ### Q1: Mengapa saat pertama kali dijalankan terasa cukup lama?
-**Jawab**: Pada eksekusi perdana, sistem mengunduh model transformer dari Hugging Face (~860 MB untuk mDeBERTa dan ~470 MB untuk Sentence-BERT) serta menghitung embedding untuk korpus. Namun setelah cache tersimpan di folder `cache/`, program berikutnya akan terbuka hanya dalam hitungan detik.
+**Jawab**: Pada eksekusi perdana, sistem mengunduh model transformer dari Hugging Face (model IndoBERT / mDeBERTa dan Sentence-BERT) serta menghitung embedding untuk korpus. Namun setelah cache tersimpan di folder `cache/`, program berikutnya akan terbuka hanya dalam hitungan detik.
 
 ### Q2: Apakah program ini membutuhkan koneksi internet saat berjalan?
 **Jawab**: **Tidak**. Setelah model dan dataset terunduh pada eksekusi pertama, seluruh proses inferensi (Retrieval, NLI, SHAP) berjalan **100% secara lokal (*offline*)** di komputer Anda.

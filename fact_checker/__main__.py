@@ -217,7 +217,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     parser = argparse.ArgumentParser(
         prog="python -m fact_checker",
-        description="Indonesian News Fact-Checker — Hybrid Retrieval + Multilingual NLI + SHAP",
+        description="Indonesian News Fact-Checker: IndoBERT & Entailment Verification (NLI) — Hybrid Retrieval + SHAP",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 

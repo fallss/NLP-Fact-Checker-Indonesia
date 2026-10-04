@@ -1,16 +1,16 @@
-# 🔎 Indonesian News Fact-Checker
+# 🔎 Indonesian News Fact-Checker: IndoBERT & Entailment Verification (NLI)
 
 > **Project UTS — Natural Language Processing (Semester 7)**
 > Verifikasi klaim berbahasa Indonesia terhadap **32.000 artikel berita** (7 portal, Maret–April 2023)
-> dengan *retrieval-augmented Natural Language Inference* dan *Explainable AI*.
+> menggunakan **IndoBERT dan Entailment Verification (NLI)**, *retrieval-augmented hybrid search*, dan *Explainable AI (SHAP)*.
 
-![python](https://img.shields.io/badge/python-3.10%2B-blue) ![torch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c) ![hf](https://img.shields.io/badge/🤗-Transformers-yellow) ![tests](https://img.shields.io/badge/tests-18%20passed-brightgreen)
+![python](https://img.shields.io/badge/python-3.10%2B-blue) ![torch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c) ![hf](https://img.shields.io/badge/🤗-Transformers-yellow) ![indobert](https://img.shields.io/badge/model-IndoBERT%20%26%20NLI-green) ![tests](https://img.shields.io/badge/tests-18%20passed-brightgreen)
 
 Diberikan sebuah klaim, sistem akan:
-1. mencari artikel & passage bukti yang relevan dari korpus,
-2. menilai hubungan logis klaim–bukti (*entailment / neutral / contradiction*),
-3. memberi **verdict** — `DIDUKUNG FAKTA` · `BERTENTANGAN / HOAKS` · `BUKTI TIDAK CUKUP` — beserta *confidence*,
-4. menjelaskan kata mana yang paling memengaruhi keputusan (SHAP).
+1. mencari artikel & passage bukti yang relevan dari korpus 32.000 berita nasional,
+2. memverifikasi hubungan inferensi logika klaim–bukti menggunakan **IndoBERT & Entailment Verification** (*entailment / neutral / contradiction*),
+3. memberi **verdict** — `DIDUKUNG FAKTA` · `BERTENTANGAN / HOAKS` · `BUKTI TIDAK CUKUP` — beserta tingkat keyakinan (*confidence*),
+4. menjelaskan kata mana yang paling memengaruhi keputusan (Explainable AI via SHAP).
 
 ---
 
@@ -23,8 +23,8 @@ Diberikan sebuah klaim, sistem akan:
           └──▶│ Sentence-BERT (judul+ringkasan)┘   RRF(d) = Σ 1/(60 + rank)                   │
               └───────────────────────────────────────────────┬───────────────────────────────┘
                                                               ▼
-              ┌──── Tahap 2: Passage Selection ────┐   ┌──── Tahap 3: NLI ────────────────────┐
-              │ artikel → passage 3 kalimat        │──▶│ mDeBERTa-v3 multilingual (batch)     │
+              ┌──── Tahap 2: Passage Selection ────┐   ┌──── Tahap 3: IndoBERT & Entailment ──┐
+              │ artikel → passage 3 kalimat        │──▶│ IndoBERT NLI / mDeBERTa-v3           │
               │ (sliding window), urut cosine sim  │   │ premise = passage, hypothesis = klaim│
               └────────────────────────────────────┘   └──────────────────┬───────────────────┘
                                                                           ▼
@@ -41,7 +41,7 @@ Diberikan sebuah klaim, sistem akan:
 | Sparse retrieval | Okapi BM25 (implementasi vektor, matriks sparse SciPy) |
 | Dense retrieval | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` |
 | Fusion | Reciprocal Rank Fusion (Cormack et al., 2009) |
-| NLI | `MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7` |
+| NLI & Verifikasi | `LazarusNLP/indobert-lite-base-p1-indonli-multilingual-nli-distil-mdeberta` (IndoBERT NLI) & `MoritzLaurer/mDeBERTa-v3-base-xnli` |
 | Explainability | SHAP (Partition Explainer) + fallback occlusion |
 | Antarmuka | CLI (`rich`), Web App (`gradio`), Jupyter Notebook |
 

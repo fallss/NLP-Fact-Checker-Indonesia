@@ -726,9 +726,11 @@ def render_methodology_html() -> str:
       <div class="fc-method-card">
         <div class="fc-method-header">
           <span class="fc-method-badge">TAHAP 4</span>
-          <h3 class="fc-method-title">🧠 Natural Language Inference (Cross-Lingual mDeBERTa-v3)</h3>
+          <h3 class="fc-method-title">🧠 IndoBERT &amp; Entailment Verification (NLI)</h3>
         </div>
-        <p style="margin:4px 0 10px;color:var(--body-text-color);">Model Transformer canggih <code>MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7</code> membaca pasangan <i>[Premis: Bukti]</i> dan <i>[Hipotesis: Klaim]</i> secara serentak untuk menghasilkan distribusi probabilitas terkalibrasi:</p>
+        <p style="margin:4px 0 10px;color:var(--body-text-color);">
+          Verifikasi inferensi logika antara <i>[Premis: Bukti Berita]</i> dan <i>[Hipotesis: Klaim]</i> menggunakan arsitektur <b>IndoBERT NLI</b> (dilatih pada dataset <b>IndoNLI</b>) dan Cross-Lingual NLI untuk menghasilkan distribusi probabilitas terkalibrasi:
+        </p>
         <div class="fc-math-box">
           <span style="font-weight:600;">Distribusi Softmax:</span>
           <span class="fc-badge" style="background:rgba(16,185,129,0.15);color:#065f46;border:1px solid rgba(16,185,129,0.3);">P(Entailment)</span>
@@ -885,15 +887,15 @@ def build_app(checker: FactChecker):
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
             <h1>🔎 Indonesian News Fact-Checker</h1>
             <span class="fc-chip" style="background:rgba(59,130,246,0.3);border-color:#60a5fa;color:#eff6ff;">
-              ⚡ v2.0 · Multilingual NLI
+              ⚡ IndoBERT &amp; Entailment Verification
             </span>
           </div>
-          <p>Sistem verifikasi klaim berita berbahasa Indonesia terhadap <b>{n_articles:,} artikel berita terverifikasi</b>
-             dari <b>{sources} portal berita nasional</b> (Maret–April 2023) menggunakan Retrieval-Augmented NLI dan Explainable AI.</p>
+          <p>Sistem verifikasi klaim berita berbahasa Indonesia berbasis <b>IndoBERT dan Entailment Verification (NLI)</b> terhadap <b>{n_articles:,} artikel berita terverifikasi</b>
+             dari <b>{sources} portal berita nasional</b> (Maret–April 2023) menggunakan Retrieval-Augmented NLI dan Explainable AI (SHAP).</p>
           <div class="fc-chips">
             <span class="fc-chip">① Hybrid Retrieval (BM25 + SBERT + RRF)</span>
             <span class="fc-chip">② Sentence-Window Passage Selection</span>
-            <span class="fc-chip">③ Multilingual NLI (mDeBERTa-v3)</span>
+            <span class="fc-chip">③ IndoBERT / Multilingual NLI</span>
             <span class="fc-chip">④ Multi-Evidence FEVER Aggregation</span>
             <span class="fc-chip">⑤ Explainable AI (SHAP Saliency)</span>
           </div>

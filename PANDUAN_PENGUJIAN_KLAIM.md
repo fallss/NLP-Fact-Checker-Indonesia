@@ -1,6 +1,6 @@
-# 📝 DAFTAR CONTOH INPUT KLAIM PENGUJIAN (FACT-CHECKER)
+# 📝 DAFTAR CONTOH INPUT KLAIM PENGUJIAN — INDOBERT & ENTAILMENT VERIFICATION (NLI)
 
-Dokumen ini menyediakan kumpulan contoh klaim uji coba berbahasa Indonesia yang dirancang khusus untuk menguji keandalan sistem **Indonesian News Fact-Checker v2.0**. Klaim-klaim ini diambil dan disesuaikan dari peristiwa nasional nyata pada korpus berita **Maret–April 2023** (`data.csv`).
+Dokumen ini menyediakan kumpulan contoh klaim uji coba berbahasa Indonesia yang dirancang khusus untuk menguji keandalan sistem **Indonesian News Fact-Checker: IndoBERT & Entailment Verification (NLI)**. Klaim-klaim ini diambil dan disesuaikan dari peristiwa nasional nyata pada korpus berita **Maret–April 2023** (`data.csv`).
 
 Anda dapat menyalin (*copy*) salah satu klaim di bawah ini dan menempelkannya (*paste*) pada:
 - **Web App Gradio**: Masukkan pada kotak teks input klaim di `http://127.0.0.1:7860`.
