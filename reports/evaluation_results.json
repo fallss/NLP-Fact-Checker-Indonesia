@@ -1,0 +1,2517 @@
+{
+  "nli": {
+    "mdeberta": {
+      "n": 45,
+      "accuracy": 0.8888888888888888,
+      "macro_precision": 0.891468253968254,
+      "macro_recall": 0.888888888888889,
+      "macro_f1": 0.889531578296873,
+      "per_class": {
+        "ENTAILMENT": {
+          "precision": 0.9333333333333333,
+          "recall": 0.9333333333333333,
+          "f1-score": 0.9333333333333333,
+          "support": 15.0
+        },
+        "NEUTRAL": {
+          "precision": 0.9285714285714286,
+          "recall": 0.8666666666666667,
+          "f1-score": 0.896551724137931,
+          "support": 15.0
+        },
+        "CONTRADICTION": {
+          "precision": 0.8125,
+          "recall": 0.8666666666666667,
+          "f1-score": 0.8387096774193549,
+          "support": 15.0
+        },
+        "accuracy": 0.8888888888888888,
+        "macro avg": {
+          "precision": 0.891468253968254,
+          "recall": 0.888888888888889,
+          "f1-score": 0.889531578296873,
+          "support": 45.0
+        },
+        "weighted avg": {
+          "precision": 0.891468253968254,
+          "recall": 0.8888888888888888,
+          "f1-score": 0.8895315782968731,
+          "support": 45.0
+        }
+      },
+      "labels": [
+        "ENTAILMENT",
+        "NEUTRAL",
+        "CONTRADICTION"
+      ],
+      "confusion_matrix": [
+        [
+          14,
+          0,
+          1
+        ],
+        [
+          0,
+          13,
+          2
+        ],
+        [
+          1,
+          1,
+          13
+        ]
+      ],
+      "model": "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+      "seconds_per_pair": 2.3860488977778003,
+      "predictions": [
+        {
+          "id": 1,
+          "topic": "Kebakaran Plumpang: instruksi Presiden",
+          "claim": "Presiden Jokowi memerintahkan Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Depo Pertamina Plumpang.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.970221757888794
+        },
+        {
+          "id": 2,
+          "topic": "Kebakaran Plumpang: instruksi Presiden",
+          "claim": "Presiden Jokowi melarang Wakil Presiden Ma'ruf Amin mengunjungi lokasi kebakaran Depo Pertamina Plumpang.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9985167384147644
+        },
+        {
+          "id": 3,
+          "topic": "Kebakaran Plumpang: instruksi Presiden",
+          "claim": "Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Plumpang bersama Gubernur Jawa Barat Ridwan Kamil.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.4983818531036377
+        },
+        {
+          "id": 4,
+          "topic": "Kebakaran Plumpang: jumlah korban",
+          "claim": "Hingga 16 Maret 2023, korban meninggal akibat kebakaran Depo Plumpang bertambah menjadi 25 orang.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9514762759208679
+        },
+        {
+          "id": 5,
+          "topic": "Kebakaran Plumpang: jumlah korban",
+          "claim": "Kebakaran Depo Plumpang sama sekali tidak menyebabkan korban meninggal dunia.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9972955584526062
+        },
+        {
+          "id": 6,
+          "topic": "Kebakaran Plumpang: jumlah korban",
+          "claim": "Kebakaran Depo Plumpang dipastikan disebabkan oleh sambaran petir.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.987903892993927
+        },
+        {
+          "id": 7,
+          "topic": "Putusan penundaan Pemilu: banding KPU",
+          "claim": "KPU sedang menyiapkan memori banding atas putusan PN Jakarta Pusat yang memerintahkan penundaan pemilu.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9884476065635681
+        },
+        {
+          "id": 8,
+          "topic": "Putusan penundaan Pemilu: banding KPU",
+          "claim": "KPU menerima putusan PN Jakarta Pusat dan memutuskan tidak akan mengajukan banding.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9570952653884888
+        },
+        {
+          "id": 9,
+          "topic": "Putusan penundaan Pemilu: banding KPU",
+          "claim": "Pengadilan Tinggi DKI Jakarta telah mengabulkan banding yang diajukan KPU.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.8677502274513245
+        },
+        {
+          "id": 10,
+          "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+          "claim": "Ketua Panpel Arema FC Abdul Haris dijatuhi hukuman penjara satu setengah tahun dalam kasus Tragedi Kanjuruhan.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5581234693527222
+        },
+        {
+          "id": 11,
+          "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+          "claim": "Ketua Panpel Arema FC Abdul Haris divonis bebas oleh majelis hakim dalam kasus Tragedi Kanjuruhan.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9588860273361206
+        },
+        {
+          "id": 12,
+          "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+          "claim": "Abdul Haris langsung mengajukan banding ke Pengadilan Tinggi Jawa Timur setelah vonis dibacakan.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9982724189758301
+        },
+        {
+          "id": 13,
+          "topic": "Longsor Pulau Serasan, Natuna",
+          "claim": "Longsor di Pulau Serasan, Natuna, menyebabkan sedikitnya sepuluh orang meninggal dunia.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9990660548210144
+        },
+        {
+          "id": 14,
+          "topic": "Longsor Pulau Serasan, Natuna",
+          "claim": "Bencana longsor di Pulau Serasan tidak menimbulkan korban jiwa maupun korban hilang.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9992077946662903
+        },
+        {
+          "id": 15,
+          "topic": "Longsor Pulau Serasan, Natuna",
+          "claim": "Longsor di Pulau Serasan dipicu oleh aktivitas tambang pasir ilegal.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9993389248847961
+        },
+        {
+          "id": 16,
+          "topic": "Erupsi Gunung Merapi 11 Maret",
+          "claim": "Warga diminta menjauhi radius 7 km dari puncak Merapi setelah awan panas guguran pada 11 Maret 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "CONTRADICTION",
+          "confidence": 0.5121985077857971
+        },
+        {
+          "id": 17,
+          "topic": "Erupsi Gunung Merapi 11 Maret",
+          "claim": "Gunung Merapi tidak menunjukkan aktivitas apa pun pada 11 Maret 2023 sehingga warga bebas mendekati puncak.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9888938069343567
+        },
+        {
+          "id": 18,
+          "topic": "Erupsi Gunung Merapi 11 Maret",
+          "claim": "Erupsi Merapi pada 11 Maret 2023 membuat Bandara Adisutjipto Yogyakarta ditutup sementara.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9897918701171875
+        },
+        {
+          "id": 19,
+          "topic": "Transaksi janggal Rafael Alun",
+          "claim": "PPATK membekukan lebih dari 40 rekening yang terkait dengan Rafael Alun Trisambodo dan keluarganya.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9964885711669922
+        },
+        {
+          "id": 20,
+          "topic": "Transaksi janggal Rafael Alun",
+          "claim": "PPATK tidak menemukan satu pun transaksi mencurigakan pada rekening Rafael Alun Trisambodo.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9985864162445068
+        },
+        {
+          "id": 21,
+          "topic": "Transaksi janggal Rafael Alun",
+          "claim": "Rafael Alun Trisambodo telah divonis 14 tahun penjara oleh Pengadilan Tipikor.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9986128807067871
+        },
+        {
+          "id": 22,
+          "topic": "Kasus Mario Dandy: restorative justice",
+          "claim": "Kejati DKI Jakarta menyatakan tidak ada peluang restorative justice bagi tersangka Mario Dandy dan Shane Lukas.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9951167106628418
+        },
+        {
+          "id": 23,
+          "topic": "Kasus Mario Dandy: restorative justice",
+          "claim": "Kejati DKI Jakarta menyetujui penyelesaian kasus Mario Dandy melalui restorative justice.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.42717233300209045
+        },
+        {
+          "id": 24,
+          "topic": "Kasus Mario Dandy: restorative justice",
+          "claim": "Mario Dandy menyampaikan permintaan maaf secara langsung kepada keluarga David di kantor Kejati DKI.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9480547904968262
+        },
+        {
+          "id": 25,
+          "topic": "Penetapan 1 Ramadan 1444 H",
+          "claim": "Sidang isbat yang dipimpin Menteri Agama menetapkan 1 Ramadan 1444 H jatuh pada Kamis, 23 Maret 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9911318421363831
+        },
+        {
+          "id": 26,
+          "topic": "Penetapan 1 Ramadan 1444 H",
+          "claim": "Pemerintah menetapkan 1 Ramadan 1444 H jatuh pada hari Selasa, 21 Maret 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9726411700248718
+        },
+        {
+          "id": 27,
+          "topic": "Penetapan 1 Ramadan 1444 H",
+          "claim": "Sidang isbat awal Ramadan 1444 H dihadiri oleh perwakilan 30 negara sahabat.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.8884419202804565
+        },
+        {
+          "id": 28,
+          "topic": "Harga BBM non-subsidi 1 Maret 2023",
+          "claim": "Harga Pertamax di wilayah Jabodetabek naik menjadi Rp 13.300 per liter mulai 1 Maret 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9179643392562866
+        },
+        {
+          "id": 29,
+          "topic": "Harga BBM non-subsidi 1 Maret 2023",
+          "claim": "Pertamina menurunkan harga Pertamax di Jabodetabek menjadi Rp 11.300 per liter per 1 Maret 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9952034950256348
+        },
+        {
+          "id": 30,
+          "topic": "Harga BBM non-subsidi 1 Maret 2023",
+          "claim": "Pemerintah berencana menaikkan harga Pertalite menjadi Rp 12.000 per liter pada bulan depan.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.5754560232162476
+        },
+        {
+          "id": 31,
+          "topic": "Proyeksi pemudik Lebaran 2023",
+          "claim": "Kemenhub memprediksi pergerakan masyarakat selama Lebaran 2023 mencapai 123,8 juta orang.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9588098526000977
+        },
+        {
+          "id": 32,
+          "topic": "Proyeksi pemudik Lebaran 2023",
+          "claim": "Jumlah pergerakan masyarakat saat Lebaran 2023 diprediksi turun dibandingkan Lebaran 2022.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9761255383491516
+        },
+        {
+          "id": 33,
+          "topic": "Proyeksi pemudik Lebaran 2023",
+          "claim": "Pemerintah memberlakukan larangan mudik bagi aparatur sipil negara pada Lebaran 2023.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9406818747520447
+        },
+        {
+          "id": 34,
+          "topic": "Program mudik gratis Kemenhub",
+          "claim": "Kementerian Perhubungan mengalokasikan anggaran Rp 20 miliar untuk program mudik gratis Lebaran 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.905384361743927
+        },
+        {
+          "id": 35,
+          "topic": "Program mudik gratis Kemenhub",
+          "claim": "Kementerian Perhubungan meniadakan program mudik gratis pada Lebaran 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9974714517593384
+        },
+        {
+          "id": 36,
+          "topic": "Program mudik gratis Kemenhub",
+          "claim": "Pendaftaran mudik gratis Kemenhub hanya dapat dilakukan melalui kantor pos.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9932880997657776
+        },
+        {
+          "id": 37,
+          "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+          "claim": "FIFA mencabut status Indonesia sebagai tuan rumah Piala Dunia U-20 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9141787886619568
+        },
+        {
+          "id": 38,
+          "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+          "claim": "FIFA menegaskan Indonesia tetap menjadi tuan rumah Piala Dunia U-20 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "NEUTRAL",
+          "confidence": 0.9669445753097534
+        },
+        {
+          "id": 39,
+          "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+          "claim": "FIFA menjatuhkan denda sebesar 10 juta dolar AS kepada PSSI.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9971428513526917
+        },
+        {
+          "id": 40,
+          "topic": "Gempa Keerom, Papua",
+          "claim": "BMKG melaporkan gempa bermagnitudo 6,3 mengguncang Keerom, Papua.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9953914880752563
+        },
+        {
+          "id": 41,
+          "topic": "Gempa Keerom, Papua",
+          "claim": "Gempa yang mengguncang Keerom, Papua, hanya bermagnitudo 3,1.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9977401494979858
+        },
+        {
+          "id": 42,
+          "topic": "Gempa Keerom, Papua",
+          "claim": "Gempa di Keerom, Papua, merusak puluhan rumah warga.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9990127086639404
+        },
+        {
+          "id": 43,
+          "topic": "Penangkapan pelajar tawuran Kalideres",
+          "claim": "Polisi menangkap 18 pelajar yang hendak tawuran di Kalideres, Jakarta Barat.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9104954600334167
+        },
+        {
+          "id": 44,
+          "topic": "Penangkapan pelajar tawuran Kalideres",
+          "claim": "Polisi tidak menemukan satu pun senjata tajam dari pelajar yang ditangkap di Kalideres.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9628956317901611
+        },
+        {
+          "id": 45,
+          "topic": "Penangkapan pelajar tawuran Kalideres",
+          "claim": "Para pelajar yang ditangkap di Kalideres berasal dari tiga sekolah kejuruan yang berbeda.",
+          "gold": "NEUTRAL",
+          "pred": "NEUTRAL",
+          "confidence": 0.9960507750511169
+        }
+      ]
+    },
+    "baseline": {
+      "n": 45,
+      "accuracy": 0.4222222222222222,
+      "macro_precision": 0.2777777777777778,
+      "macro_recall": 0.4222222222222222,
+      "macro_f1": 0.3259259259259259,
+      "per_class": {
+        "ENTAILMENT": {
+          "precision": 0.43333333333333335,
+          "recall": 0.8666666666666667,
+          "f1-score": 0.5777777777777777,
+          "support": 15.0
+        },
+        "NEUTRAL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 15.0
+        },
+        "CONTRADICTION": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1-score": 0.4,
+          "support": 15.0
+        },
+        "accuracy": 0.4222222222222222,
+        "macro avg": {
+          "precision": 0.2777777777777778,
+          "recall": 0.4222222222222222,
+          "f1-score": 0.3259259259259259,
+          "support": 45.0
+        },
+        "weighted avg": {
+          "precision": 0.2777777777777778,
+          "recall": 0.4222222222222222,
+          "f1-score": 0.3259259259259259,
+          "support": 45.0
+        }
+      },
+      "labels": [
+        "ENTAILMENT",
+        "NEUTRAL",
+        "CONTRADICTION"
+      ],
+      "confusion_matrix": [
+        [
+          13,
+          0,
+          2
+        ],
+        [
+          8,
+          0,
+          7
+        ],
+        [
+          9,
+          0,
+          6
+        ]
+      ],
+      "model": "cross-encoder/nli-MiniLM2-L6-H768",
+      "seconds_per_pair": 0.09516274222219687,
+      "predictions": [
+        {
+          "id": 1,
+          "topic": "Kebakaran Plumpang: instruksi Presiden",
+          "claim": "Presiden Jokowi memerintahkan Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Depo Pertamina Plumpang.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.753594696521759
+        },
+        {
+          "id": 2,
+          "topic": "Kebakaran Plumpang: instruksi Presiden",
+          "claim": "Presiden Jokowi melarang Wakil Presiden Ma'ruf Amin mengunjungi lokasi kebakaran Depo Pertamina Plumpang.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.8545400500297546
+        },
+        {
+          "id": 3,
+          "topic": "Kebakaran Plumpang: instruksi Presiden",
+          "claim": "Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Plumpang bersama Gubernur Jawa Barat Ridwan Kamil.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5295042395591736
+        },
+        {
+          "id": 4,
+          "topic": "Kebakaran Plumpang: jumlah korban",
+          "claim": "Hingga 16 Maret 2023, korban meninggal akibat kebakaran Depo Plumpang bertambah menjadi 25 orang.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.7985815405845642
+        },
+        {
+          "id": 5,
+          "topic": "Kebakaran Plumpang: jumlah korban",
+          "claim": "Kebakaran Depo Plumpang sama sekali tidak menyebabkan korban meninggal dunia.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.49097493290901184
+        },
+        {
+          "id": 6,
+          "topic": "Kebakaran Plumpang: jumlah korban",
+          "claim": "Kebakaran Depo Plumpang dipastikan disebabkan oleh sambaran petir.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.4956343173980713
+        },
+        {
+          "id": 7,
+          "topic": "Putusan penundaan Pemilu: banding KPU",
+          "claim": "KPU sedang menyiapkan memori banding atas putusan PN Jakarta Pusat yang memerintahkan penundaan pemilu.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.6501081585884094
+        },
+        {
+          "id": 8,
+          "topic": "Putusan penundaan Pemilu: banding KPU",
+          "claim": "KPU menerima putusan PN Jakarta Pusat dan memutuskan tidak akan mengajukan banding.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.4311795234680176
+        },
+        {
+          "id": 9,
+          "topic": "Putusan penundaan Pemilu: banding KPU",
+          "claim": "Pengadilan Tinggi DKI Jakarta telah mengabulkan banding yang diajukan KPU.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.5389782786369324
+        },
+        {
+          "id": 10,
+          "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+          "claim": "Ketua Panpel Arema FC Abdul Haris dijatuhi hukuman penjara satu setengah tahun dalam kasus Tragedi Kanjuruhan.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.562621533870697
+        },
+        {
+          "id": 11,
+          "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+          "claim": "Ketua Panpel Arema FC Abdul Haris divonis bebas oleh majelis hakim dalam kasus Tragedi Kanjuruhan.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.7672461867332458
+        },
+        {
+          "id": 12,
+          "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+          "claim": "Abdul Haris langsung mengajukan banding ke Pengadilan Tinggi Jawa Timur setelah vonis dibacakan.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.4678109288215637
+        },
+        {
+          "id": 13,
+          "topic": "Longsor Pulau Serasan, Natuna",
+          "claim": "Longsor di Pulau Serasan, Natuna, menyebabkan sedikitnya sepuluh orang meninggal dunia.",
+          "gold": "ENTAILMENT",
+          "pred": "CONTRADICTION",
+          "confidence": 0.784798264503479
+        },
+        {
+          "id": 14,
+          "topic": "Longsor Pulau Serasan, Natuna",
+          "claim": "Bencana longsor di Pulau Serasan tidak menimbulkan korban jiwa maupun korban hilang.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9307571649551392
+        },
+        {
+          "id": 15,
+          "topic": "Longsor Pulau Serasan, Natuna",
+          "claim": "Longsor di Pulau Serasan dipicu oleh aktivitas tambang pasir ilegal.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.7519967555999756
+        },
+        {
+          "id": 16,
+          "topic": "Erupsi Gunung Merapi 11 Maret",
+          "claim": "Warga diminta menjauhi radius 7 km dari puncak Merapi setelah awan panas guguran pada 11 Maret 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.7770093679428101
+        },
+        {
+          "id": 17,
+          "topic": "Erupsi Gunung Merapi 11 Maret",
+          "claim": "Gunung Merapi tidak menunjukkan aktivitas apa pun pada 11 Maret 2023 sehingga warga bebas mendekati puncak.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5844470858573914
+        },
+        {
+          "id": 18,
+          "topic": "Erupsi Gunung Merapi 11 Maret",
+          "claim": "Erupsi Merapi pada 11 Maret 2023 membuat Bandara Adisutjipto Yogyakarta ditutup sementara.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.6375620365142822
+        },
+        {
+          "id": 19,
+          "topic": "Transaksi janggal Rafael Alun",
+          "claim": "PPATK membekukan lebih dari 40 rekening yang terkait dengan Rafael Alun Trisambodo dan keluarganya.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.8102645874023438
+        },
+        {
+          "id": 20,
+          "topic": "Transaksi janggal Rafael Alun",
+          "claim": "PPATK tidak menemukan satu pun transaksi mencurigakan pada rekening Rafael Alun Trisambodo.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.6386539936065674
+        },
+        {
+          "id": 21,
+          "topic": "Transaksi janggal Rafael Alun",
+          "claim": "Rafael Alun Trisambodo telah divonis 14 tahun penjara oleh Pengadilan Tipikor.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.8947222232818604
+        },
+        {
+          "id": 22,
+          "topic": "Kasus Mario Dandy: restorative justice",
+          "claim": "Kejati DKI Jakarta menyatakan tidak ada peluang restorative justice bagi tersangka Mario Dandy dan Shane Lukas.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.865149736404419
+        },
+        {
+          "id": 23,
+          "topic": "Kasus Mario Dandy: restorative justice",
+          "claim": "Kejati DKI Jakarta menyetujui penyelesaian kasus Mario Dandy melalui restorative justice.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5890823602676392
+        },
+        {
+          "id": 24,
+          "topic": "Kasus Mario Dandy: restorative justice",
+          "claim": "Mario Dandy menyampaikan permintaan maaf secara langsung kepada keluarga David di kantor Kejati DKI.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5428054928779602
+        },
+        {
+          "id": 25,
+          "topic": "Penetapan 1 Ramadan 1444 H",
+          "claim": "Sidang isbat yang dipimpin Menteri Agama menetapkan 1 Ramadan 1444 H jatuh pada Kamis, 23 Maret 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.8670696020126343
+        },
+        {
+          "id": 26,
+          "topic": "Penetapan 1 Ramadan 1444 H",
+          "claim": "Pemerintah menetapkan 1 Ramadan 1444 H jatuh pada hari Selasa, 21 Maret 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9674296975135803
+        },
+        {
+          "id": 27,
+          "topic": "Penetapan 1 Ramadan 1444 H",
+          "claim": "Sidang isbat awal Ramadan 1444 H dihadiri oleh perwakilan 30 negara sahabat.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.6127799153327942
+        },
+        {
+          "id": 28,
+          "topic": "Harga BBM non-subsidi 1 Maret 2023",
+          "claim": "Harga Pertamax di wilayah Jabodetabek naik menjadi Rp 13.300 per liter mulai 1 Maret 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.730986475944519
+        },
+        {
+          "id": 29,
+          "topic": "Harga BBM non-subsidi 1 Maret 2023",
+          "claim": "Pertamina menurunkan harga Pertamax di Jabodetabek menjadi Rp 11.300 per liter per 1 Maret 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.6890140175819397
+        },
+        {
+          "id": 30,
+          "topic": "Harga BBM non-subsidi 1 Maret 2023",
+          "claim": "Pemerintah berencana menaikkan harga Pertalite menjadi Rp 12.000 per liter pada bulan depan.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5986171960830688
+        },
+        {
+          "id": 31,
+          "topic": "Proyeksi pemudik Lebaran 2023",
+          "claim": "Kemenhub memprediksi pergerakan masyarakat selama Lebaran 2023 mencapai 123,8 juta orang.",
+          "gold": "ENTAILMENT",
+          "pred": "CONTRADICTION",
+          "confidence": 0.5160822868347168
+        },
+        {
+          "id": 32,
+          "topic": "Proyeksi pemudik Lebaran 2023",
+          "claim": "Jumlah pergerakan masyarakat saat Lebaran 2023 diprediksi turun dibandingkan Lebaran 2022.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.5625531077384949
+        },
+        {
+          "id": 33,
+          "topic": "Proyeksi pemudik Lebaran 2023",
+          "claim": "Pemerintah memberlakukan larangan mudik bagi aparatur sipil negara pada Lebaran 2023.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5852237939834595
+        },
+        {
+          "id": 34,
+          "topic": "Program mudik gratis Kemenhub",
+          "claim": "Kementerian Perhubungan mengalokasikan anggaran Rp 20 miliar untuk program mudik gratis Lebaran 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.7169147729873657
+        },
+        {
+          "id": 35,
+          "topic": "Program mudik gratis Kemenhub",
+          "claim": "Kementerian Perhubungan meniadakan program mudik gratis pada Lebaran 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.7825478911399841
+        },
+        {
+          "id": 36,
+          "topic": "Program mudik gratis Kemenhub",
+          "claim": "Pendaftaran mudik gratis Kemenhub hanya dapat dilakukan melalui kantor pos.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5713281631469727
+        },
+        {
+          "id": 37,
+          "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+          "claim": "FIFA mencabut status Indonesia sebagai tuan rumah Piala Dunia U-20 2023.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.8973066210746765
+        },
+        {
+          "id": 38,
+          "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+          "claim": "FIFA menegaskan Indonesia tetap menjadi tuan rumah Piala Dunia U-20 2023.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.9001106023788452
+        },
+        {
+          "id": 39,
+          "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+          "claim": "FIFA menjatuhkan denda sebesar 10 juta dolar AS kepada PSSI.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.6057250499725342
+        },
+        {
+          "id": 40,
+          "topic": "Gempa Keerom, Papua",
+          "claim": "BMKG melaporkan gempa bermagnitudo 6,3 mengguncang Keerom, Papua.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.7705457806587219
+        },
+        {
+          "id": 41,
+          "topic": "Gempa Keerom, Papua",
+          "claim": "Gempa yang mengguncang Keerom, Papua, hanya bermagnitudo 3,1.",
+          "gold": "CONTRADICTION",
+          "pred": "CONTRADICTION",
+          "confidence": 0.9406907558441162
+        },
+        {
+          "id": 42,
+          "topic": "Gempa Keerom, Papua",
+          "claim": "Gempa di Keerom, Papua, merusak puluhan rumah warga.",
+          "gold": "NEUTRAL",
+          "pred": "CONTRADICTION",
+          "confidence": 0.5650776028633118
+        },
+        {
+          "id": 43,
+          "topic": "Penangkapan pelajar tawuran Kalideres",
+          "claim": "Polisi menangkap 18 pelajar yang hendak tawuran di Kalideres, Jakarta Barat.",
+          "gold": "ENTAILMENT",
+          "pred": "ENTAILMENT",
+          "confidence": 0.7528716921806335
+        },
+        {
+          "id": 44,
+          "topic": "Penangkapan pelajar tawuran Kalideres",
+          "claim": "Polisi tidak menemukan satu pun senjata tajam dari pelajar yang ditangkap di Kalideres.",
+          "gold": "CONTRADICTION",
+          "pred": "ENTAILMENT",
+          "confidence": 0.8152633309364319
+        },
+        {
+          "id": 45,
+          "topic": "Penangkapan pelajar tawuran Kalideres",
+          "claim": "Para pelajar yang ditangkap di Kalideres berasal dari tiga sekolah kejuruan yang berbeda.",
+          "gold": "NEUTRAL",
+          "pred": "ENTAILMENT",
+          "confidence": 0.5526413321495056
+        }
+      ]
+    }
+  },
+  "retrieval": {
+    "bm25": {
+      "recall@1": 0.17777777777777778,
+      "recall@3": 0.4,
+      "recall@5": 0.4444444444444444,
+      "recall@10": 0.5333333333333333,
+      "mrr": 0.29265432098765437
+    },
+    "dense": {
+      "recall@1": 0.2222222222222222,
+      "recall@3": 0.35555555555555557,
+      "recall@5": 0.4444444444444444,
+      "recall@10": 0.5333333333333333,
+      "mrr": 0.3107407407407407
+    },
+    "hybrid": {
+      "recall@1": 0.28888888888888886,
+      "recall@3": 0.5111111111111111,
+      "recall@5": 0.5333333333333333,
+      "recall@10": 0.6,
+      "mrr": 0.3977425044091711
+    }
+  },
+  "end_to_end": {
+    "seconds_per_claim": 14.432696022916693,
+    "strategies": {
+      "max": {
+        "n": 48,
+        "accuracy": 0.6666666666666666,
+        "macro_precision": 0.7152777777777778,
+        "macro_recall": 0.6851851851851851,
+        "macro_f1": 0.655362558588365,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.6875,
+            "recall": 0.7333333333333333,
+            "f1-score": 0.7096774193548387,
+            "support": 15.0
+          },
+          "REFUTED": {
+            "precision": 0.5833333333333334,
+            "recall": 0.9333333333333333,
+            "f1-score": 0.717948717948718,
+            "support": 15.0
+          },
+          "NOT_ENOUGH_INFO": {
+            "precision": 0.875,
+            "recall": 0.3888888888888889,
+            "f1-score": 0.5384615384615384,
+            "support": 18.0
+          },
+          "accuracy": 0.6666666666666666,
+          "macro avg": {
+            "precision": 0.7152777777777778,
+            "recall": 0.6851851851851851,
+            "f1-score": 0.655362558588365,
+            "support": 48.0
+          },
+          "weighted avg": {
+            "precision": 0.7252604166666666,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.6480562448304384,
+            "support": 48.0
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "REFUTED",
+          "NOT_ENOUGH_INFO"
+        ],
+        "confusion_matrix": [
+          [
+            11,
+            3,
+            1
+          ],
+          [
+            1,
+            14,
+            0
+          ],
+          [
+            4,
+            7,
+            7
+          ]
+        ],
+        "predictions": [
+          {
+            "id": 1,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Presiden Jokowi memerintahkan Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Depo Pertamina Plumpang.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.6559890508651733,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 2,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Presiden Jokowi melarang Wakil Presiden Ma'ruf Amin mengunjungi lokasi kebakaran Depo Pertamina Plumpang.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9985373020172119,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 3,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Plumpang bersama Gubernur Jawa Barat Ridwan Kamil.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.9079393744468689,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 4,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Hingga 16 Maret 2023, korban meninggal akibat kebakaran Depo Plumpang bertambah menjadi 25 orang.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.985019326210022,
+            "evidence_hit": true,
+            "top_evidence": "Update Kebakaran Depo Plumpang: 25 Orang Meninggal, 23 Orang Dirawat di Rumah Sakit"
+          },
+          {
+            "id": 5,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Kebakaran Depo Plumpang sama sekali tidak menyebabkan korban meninggal dunia.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.7499291896820068,
+            "evidence_hit": false,
+            "top_evidence": "Update Korban Tewas Kebakaran Plumpang Jadi 23 Orang"
+          },
+          {
+            "id": 6,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Kebakaran Depo Plumpang dipastikan disebabkan oleh sambaran petir.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.9988217949867249,
+            "evidence_hit": false,
+            "top_evidence": "Hasil Investigasi Kebakaran Depo BBM Plumpang hingga Suplai 19 Daerah Terganggu, Berikut 5 Faktanya"
+          },
+          {
+            "id": 7,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "KPU sedang menyiapkan memori banding atas putusan PN Jakarta Pusat yang memerintahkan penundaan pemilu.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9883104562759399,
+            "evidence_hit": true,
+            "top_evidence": "KPU Siapkan Memori Banding atas Putusan Penundaan Pemilu PN Jakarta Pusat"
+          },
+          {
+            "id": 8,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "KPU menerima putusan PN Jakarta Pusat dan memutuskan tidak akan mengajukan banding.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9928786158561707,
+            "evidence_hit": true,
+            "top_evidence": "KPU Siapkan Memori Banding atas Putusan Penundaan Pemilu PN Jakarta Pusat"
+          },
+          {
+            "id": 9,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "Pengadilan Tinggi DKI Jakarta telah mengabulkan banding yang diajukan KPU.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "SUPPORTED",
+            "confidence": 0.9958427548408508,
+            "evidence_hit": false,
+            "top_evidence": "Pengadilan Tinggi DKI Batalkan Putusan PN Jakpus soal Penundaan Pemilu"
+          },
+          {
+            "id": 10,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Ketua Panpel Arema FC Abdul Haris dijatuhi hukuman penjara satu setengah tahun dalam kasus Tragedi Kanjuruhan.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.8224393725395203,
+            "evidence_hit": true,
+            "top_evidence": "Vonis 1 Tahun Penjara atas Tragedi Kanjuruhan yang Tewaskan 135 Orang"
+          },
+          {
+            "id": 11,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Ketua Panpel Arema FC Abdul Haris divonis bebas oleh majelis hakim dalam kasus Tragedi Kanjuruhan.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.962235152721405,
+            "evidence_hit": false,
+            "top_evidence": "Deret Vonis Para Terdakwa Tragedi Kanjuruhan, Ada yang Bebas"
+          },
+          {
+            "id": 12,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Abdul Haris langsung mengajukan banding ke Pengadilan Tinggi Jawa Timur setelah vonis dibacakan.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.9474359154701233,
+            "evidence_hit": false,
+            "top_evidence": "Putusan Banding Ferdy Sambo Cs Dibacakan Pengadilan 12 April"
+          },
+          {
+            "id": 13,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Longsor di Pulau Serasan, Natuna, menyebabkan sedikitnya sepuluh orang meninggal dunia.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9992260932922363,
+            "evidence_hit": true,
+            "top_evidence": "Korban Meninggal Longsor Natuna Bertambah Jadi 15 Orang, 50 Masih Tertimbun"
+          },
+          {
+            "id": 14,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Bencana longsor di Pulau Serasan tidak menimbulkan korban jiwa maupun korban hilang.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9994028806686401,
+            "evidence_hit": false,
+            "top_evidence": "Update Korban Longsor Natuna: 46 Meninggal dan 9 Orang Hilang"
+          },
+          {
+            "id": 15,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Longsor di Pulau Serasan dipicu oleh aktivitas tambang pasir ilegal.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.597599595785141,
+            "evidence_hit": true,
+            "top_evidence": "Respons Aduan Warga Soal Galian C Gunung Sindoro, Ganjar: Kita Akan Tindak Tegas"
+          },
+          {
+            "id": 16,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Warga diminta menjauhi radius 7 km dari puncak Merapi setelah awan panas guguran pada 11 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.4878014922142029,
+            "evidence_hit": true,
+            "top_evidence": "Merapi Erupsi Lontarkan Guyuran Lava 1.500 Meter, Zona Bahaya 7 Km"
+          },
+          {
+            "id": 17,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Gunung Merapi tidak menunjukkan aktivitas apa pun pada 11 Maret 2023 sehingga warga bebas mendekati puncak.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9938901662826538,
+            "evidence_hit": false,
+            "top_evidence": "Siaga Level 3! Ini Kondisi Gunung Merapi Terbaru"
+          },
+          {
+            "id": 18,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Erupsi Merapi pada 11 Maret 2023 membuat Bandara Adisutjipto Yogyakarta ditutup sementara.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.7378264963626862,
+            "evidence_hit": false,
+            "top_evidence": "4 Bandara di Yogyakarta dan Semarang Tak Terdampak Erupsi Merapi"
+          },
+          {
+            "id": 19,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "PPATK membekukan lebih dari 40 rekening yang terkait dengan Rafael Alun Trisambodo dan keluarganya.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.99601811170578,
+            "evidence_hit": true,
+            "top_evidence": "Arus Transaksi Janggal di Rekening Rafael Alun Capai Rp 500 M, PPATK: Kemungkinan Bertambah"
+          },
+          {
+            "id": 20,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "PPATK tidak menemukan satu pun transaksi mencurigakan pada rekening Rafael Alun Trisambodo.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9989833235740662,
+            "evidence_hit": false,
+            "top_evidence": "Lima Hal Seputar Arus Transaksi Janggal Rafael Alun Senilai Rp 500 Miliar"
+          },
+          {
+            "id": 21,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "Rafael Alun Trisambodo telah divonis 14 tahun penjara oleh Pengadilan Tipikor.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "SUPPORTED",
+            "confidence": 0.6852959990501404,
+            "evidence_hit": false,
+            "top_evidence": "Rafael Alun Terancam Pidana Maksimal 20 Tahun Penjara"
+          },
+          {
+            "id": 22,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Kejati DKI Jakarta menyatakan tidak ada peluang restorative justice bagi tersangka Mario Dandy dan Shane Lukas.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9934654831886292,
+            "evidence_hit": true,
+            "top_evidence": "Dandy dan Shane Tak Akan Dapat Restorative Justice, Begini Alasannya"
+          },
+          {
+            "id": 23,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Kejati DKI Jakarta menyetujui penyelesaian kasus Mario Dandy melalui restorative justice.",
+            "gold": "REFUTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.988696813583374,
+            "evidence_hit": false,
+            "top_evidence": "Ini Dia Sosok Kajati DKI Jakarta yang Tawarkan David Berdamai dengan Mario Dandy"
+          },
+          {
+            "id": 24,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Mario Dandy menyampaikan permintaan maaf secara langsung kepada keluarga David di kantor Kejati DKI.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.734810471534729,
+            "evidence_hit": false,
+            "top_evidence": "Kala Ayah David Sempat Beri Ampun Mario Dandy, Kini Tutup Pintu Maaf Rapat-rapat"
+          },
+          {
+            "id": 25,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Sidang isbat yang dipimpin Menteri Agama menetapkan 1 Ramadan 1444 H jatuh pada Kamis, 23 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9599859714508057,
+            "evidence_hit": false,
+            "top_evidence": "RESMI! Kemenag Umumkan 1 Ramadan 1444 Hijriah Jatuh Pada Kamis Ini"
+          },
+          {
+            "id": 26,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Pemerintah menetapkan 1 Ramadan 1444 H jatuh pada hari Selasa, 21 Maret 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9633802175521851,
+            "evidence_hit": false,
+            "top_evidence": "PBNU Tetapkan 1 Ramadan 1444 H Jatuh pada Kamis 23 Maret"
+          },
+          {
+            "id": 27,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Sidang isbat awal Ramadan 1444 H dihadiri oleh perwakilan 30 negara sahabat.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9901523198932409,
+            "evidence_hit": false,
+            "top_evidence": "Link Live Streaming Sidang Isbat Kemenang 1 Ramadan 1444 H"
+          },
+          {
+            "id": 28,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Harga Pertamax di wilayah Jabodetabek naik menjadi Rp 13.300 per liter mulai 1 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9375700354576111,
+            "evidence_hit": true,
+            "top_evidence": "Cek Daftar Harga BBM Pertamina di Semua SPBU yang Naik Lagi per Hari Ini"
+          },
+          {
+            "id": 29,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Pertamina menurunkan harga Pertamax di Jabodetabek menjadi Rp 11.300 per liter per 1 Maret 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.8935721516609192,
+            "evidence_hit": false,
+            "top_evidence": "Pengumuman! Harga Pertamax Turbo Turun Jadi Rp15.000/Liter di Jabodetabek, Berlaku 1 April"
+          },
+          {
+            "id": 30,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Pemerintah berencana menaikkan harga Pertalite menjadi Rp 12.000 per liter pada bulan depan.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.41348767280578613,
+            "evidence_hit": true,
+            "top_evidence": "Bukan Rp 10.000, Ternyata Segini Harga Asli BBM Pertalite"
+          },
+          {
+            "id": 31,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Kemenhub memprediksi pergerakan masyarakat selama Lebaran 2023 mencapai 123,8 juta orang.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.84652179479599,
+            "evidence_hit": false,
+            "top_evidence": "5 Faktor Pendorong Mudik Tahun Ini Bakal Lebih Ramai"
+          },
+          {
+            "id": 32,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Jumlah pergerakan masyarakat saat Lebaran 2023 diprediksi turun dibandingkan Lebaran 2022.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9955862760543823,
+            "evidence_hit": true,
+            "top_evidence": "123 Juta Orang Bakal Pulang Kampung, Ini Tips Mudik Nyaman dari Menhub Budi"
+          },
+          {
+            "id": 33,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Pemerintah memberlakukan larangan mudik bagi aparatur sipil negara pada Lebaran 2023.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "SUPPORTED",
+            "confidence": 0.9840542674064636,
+            "evidence_hit": false,
+            "top_evidence": "Ingat Ya! PNS Dilarang Mudik Lebaran 2023 Pakai Mobil Dinas"
+          },
+          {
+            "id": 34,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Kementerian Perhubungan mengalokasikan anggaran Rp 20 miliar untuk program mudik gratis Lebaran 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9806923270225525,
+            "evidence_hit": true,
+            "top_evidence": "Gelar Program Mudik Gratis, Kemenhub Kucurkan Dana Rp 20 Miliar"
+          },
+          {
+            "id": 35,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Kementerian Perhubungan meniadakan program mudik gratis pada Lebaran 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9968383312225342,
+            "evidence_hit": false,
+            "top_evidence": "Daftar Mudik Gratis Lebaran yang Masih Dibuka, Jangan Sampai Kehabisan Kuota!"
+          },
+          {
+            "id": 36,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Pendaftaran mudik gratis Kemenhub hanya dapat dilakukan melalui kantor pos.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.9985036849975586,
+            "evidence_hit": false,
+            "top_evidence": "Cara Daftar Mudik Gratis Kemenhub 2023"
+          },
+          {
+            "id": 37,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA mencabut status Indonesia sebagai tuan rumah Piala Dunia U-20 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9949094653129578,
+            "evidence_hit": false,
+            "top_evidence": "Sandiaga-AHY Sebut Sejumlah Kerugian Buntut Indonesia Batal Jadi Tuan Rumah Piala Dunia U-20 2023"
+          },
+          {
+            "id": 38,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA menegaskan Indonesia tetap menjadi tuan rumah Piala Dunia U-20 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9978784322738647,
+            "evidence_hit": false,
+            "top_evidence": "3 Fakta Stadion RI Siap Jadi Tuan Rumah Piala Dunia"
+          },
+          {
+            "id": 39,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA menjatuhkan denda sebesar 10 juta dolar AS kepada PSSI.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.8693850636482239,
+            "evidence_hit": false,
+            "top_evidence": "'Koleksi' Sanksi FIFA yang Pernah Diterima Indonesia Sepanjang Sejarah"
+          },
+          {
+            "id": 40,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "BMKG melaporkan gempa bermagnitudo 6,3 mengguncang Keerom, Papua.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.9990975856781006,
+            "evidence_hit": true,
+            "top_evidence": "Gempa Magnitudo 4,7 Guncang Keerom Papua"
+          },
+          {
+            "id": 41,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "Gempa yang mengguncang Keerom, Papua, hanya bermagnitudo 3,1.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9987021684646606,
+            "evidence_hit": false,
+            "top_evidence": "Gempa M4,1 Guncang Keerom Papua"
+          },
+          {
+            "id": 42,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "Gempa di Keerom, Papua, merusak puluhan rumah warga.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9330987706780434,
+            "evidence_hit": true,
+            "top_evidence": "Gempa M 4,9 Kembali Guncang Keerom Papua"
+          },
+          {
+            "id": 43,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Polisi menangkap 18 pelajar yang hendak tawuran di Kalideres, Jakarta Barat.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.9856337904930115,
+            "evidence_hit": true,
+            "top_evidence": "Polisi Tangkap Delapan Pelaku Penganiayaan Pelajar di Taman Sari Jakarta Barat"
+          },
+          {
+            "id": 44,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Polisi tidak menemukan satu pun senjata tajam dari pelajar yang ditangkap di Kalideres.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9897927045822144,
+            "evidence_hit": true,
+            "top_evidence": "Belasan Pelajar Ditangkap Saat Akan Tawuran di Jakbar, 3 Sajam Disita"
+          },
+          {
+            "id": 45,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Para pelajar yang ditangkap di Kalideres berasal dari tiga sekolah kejuruan yang berbeda.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "SUPPORTED",
+            "confidence": 0.7080381512641907,
+            "evidence_hit": false,
+            "top_evidence": "Bawa Celurit, 3 Pelajar SMA di Palembang Ditangkap"
+          },
+          {
+            "id": 46,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Timnas sepak bola Indonesia dipastikan menjuarai Piala Dunia 2030.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.6654642224311829,
+            "evidence_hit": false,
+            "top_evidence": "Sepak Bola dan Politik: Sejarah Perjumpaan Abadi"
+          },
+          {
+            "id": 47,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Peneliti Indonesia menemukan spesies dinosaurus baru di Pulau Sumba.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.8739435076713562,
+            "evidence_hit": false,
+            "top_evidence": "Benarkah Orang Indonesia Nenek Moyang Penduduk Madagaskar?"
+          },
+          {
+            "id": 48,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Kota Bandung akan membangun kereta gantung bawah laut pertama di dunia.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.997169328853488,
+            "evidence_hit": false,
+            "top_evidence": "51 Persen Tiket Kereta Angkutan Lebaran dari Bandung Sudah Dipesan"
+          }
+        ]
+      },
+      "weighted": {
+        "n": 48,
+        "accuracy": 0.6666666666666666,
+        "macro_precision": 0.7083333333333334,
+        "macro_recall": 0.662962962962963,
+        "macro_f1": 0.6595401547346628,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.875,
+            "recall": 0.4666666666666667,
+            "f1-score": 0.6086956521739131,
+            "support": 15.0
+          },
+          "REFUTED": {
+            "precision": 0.6,
+            "recall": 0.8,
+            "f1-score": 0.6857142857142857,
+            "support": 15.0
+          },
+          "NOT_ENOUGH_INFO": {
+            "precision": 0.65,
+            "recall": 0.7222222222222222,
+            "f1-score": 0.6842105263157895,
+            "support": 18.0
+          },
+          "accuracy": 0.6666666666666666,
+          "macro avg": {
+            "precision": 0.7083333333333334,
+            "recall": 0.662962962962963,
+            "f1-score": 0.6595401547346628,
+            "support": 48.0
+          },
+          "weighted avg": {
+            "precision": 0.7046875,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.6610820529584832,
+            "support": 48.0
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "REFUTED",
+          "NOT_ENOUGH_INFO"
+        ],
+        "confusion_matrix": [
+          [
+            7,
+            4,
+            4
+          ],
+          [
+            0,
+            12,
+            3
+          ],
+          [
+            1,
+            4,
+            13
+          ]
+        ],
+        "predictions": [
+          {
+            "id": 1,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Presiden Jokowi memerintahkan Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Depo Pertamina Plumpang.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.38184635117120247,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 2,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Presiden Jokowi melarang Wakil Presiden Ma'ruf Amin mengunjungi lokasi kebakaran Depo Pertamina Plumpang.",
+            "gold": "REFUTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.5055547360271017,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 3,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Plumpang bersama Gubernur Jawa Barat Ridwan Kamil.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.67749476000469,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 4,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Hingga 16 Maret 2023, korban meninggal akibat kebakaran Depo Plumpang bertambah menjadi 25 orang.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.5998974661528527,
+            "evidence_hit": true,
+            "top_evidence": "Update Kebakaran Depo Plumpang: 25 Orang Meninggal, 23 Orang Dirawat di Rumah Sakit"
+          },
+          {
+            "id": 5,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Kebakaran Depo Plumpang sama sekali tidak menyebabkan korban meninggal dunia.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.5186462954060764,
+            "evidence_hit": false,
+            "top_evidence": "Update Korban Tewas Kebakaran Plumpang Jadi 23 Orang"
+          },
+          {
+            "id": 6,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Kebakaran Depo Plumpang dipastikan disebabkan oleh sambaran petir.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.7233172279160192,
+            "evidence_hit": false,
+            "top_evidence": "Hasil Investigasi Kebakaran Depo BBM Plumpang hingga Suplai 19 Daerah Terganggu, Berikut 5 Faktanya"
+          },
+          {
+            "id": 7,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "KPU sedang menyiapkan memori banding atas putusan PN Jakarta Pusat yang memerintahkan penundaan pemilu.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.7258204315645755,
+            "evidence_hit": true,
+            "top_evidence": "KPU Siapkan Memori Banding atas Putusan Penundaan Pemilu PN Jakarta Pusat"
+          },
+          {
+            "id": 8,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "KPU menerima putusan PN Jakarta Pusat dan memutuskan tidak akan mengajukan banding.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.885092880398799,
+            "evidence_hit": true,
+            "top_evidence": "Pengadilan Tinggi DKI Batalkan Putusan PN Jakarta Pusat Soal Penundaan Pemilu"
+          },
+          {
+            "id": 9,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "Pengadilan Tinggi DKI Jakarta telah mengabulkan banding yang diajukan KPU.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "SUPPORTED",
+            "confidence": 0.9285603428912708,
+            "evidence_hit": false,
+            "top_evidence": "Pengadilan Tinggi DKI Batalkan Putusan PN Jakarta Pusat Soal Penundaan Pemilu"
+          },
+          {
+            "id": 10,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Ketua Panpel Arema FC Abdul Haris dijatuhi hukuman penjara satu setengah tahun dalam kasus Tragedi Kanjuruhan.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.5658655959136278,
+            "evidence_hit": true,
+            "top_evidence": "Deret Vonis Para Terdakwa Tragedi Kanjuruhan, Ada yang Bebas"
+          },
+          {
+            "id": 11,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Ketua Panpel Arema FC Abdul Haris divonis bebas oleh majelis hakim dalam kasus Tragedi Kanjuruhan.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.7755567578237186,
+            "evidence_hit": false,
+            "top_evidence": "Deret Vonis Para Terdakwa Tragedi Kanjuruhan, Ada yang Bebas"
+          },
+          {
+            "id": 12,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Abdul Haris langsung mengajukan banding ke Pengadilan Tinggi Jawa Timur setelah vonis dibacakan.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.5569524279579099,
+            "evidence_hit": false,
+            "top_evidence": "Sidang Putusan Banding Ferdy Sambo Cs Bakal Digelar Terbuka Besok"
+          },
+          {
+            "id": 13,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Longsor di Pulau Serasan, Natuna, menyebabkan sedikitnya sepuluh orang meninggal dunia.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.998964797298674,
+            "evidence_hit": true,
+            "top_evidence": "Bencana Longsor di Serasan Natuna, 10 Orang Meninggal 47 Hilang"
+          },
+          {
+            "id": 14,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Bencana longsor di Pulau Serasan tidak menimbulkan korban jiwa maupun korban hilang.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9938935997772816,
+            "evidence_hit": false,
+            "top_evidence": "Jenazah Korban Longsor Natuna Dikubur Massal"
+          },
+          {
+            "id": 15,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Longsor di Pulau Serasan dipicu oleh aktivitas tambang pasir ilegal.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.8491304179490384,
+            "evidence_hit": true,
+            "top_evidence": "Respons Aduan Warga Soal Galian C Gunung Sindoro, Ganjar: Kita Akan Tindak Tegas"
+          },
+          {
+            "id": 16,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Warga diminta menjauhi radius 7 km dari puncak Merapi setelah awan panas guguran pada 11 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6016336042664467,
+            "evidence_hit": true,
+            "top_evidence": "Merapi Erupsi Lontarkan Guyuran Lava 1.500 Meter, Zona Bahaya 7 Km"
+          },
+          {
+            "id": 17,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Gunung Merapi tidak menunjukkan aktivitas apa pun pada 11 Maret 2023 sehingga warga bebas mendekati puncak.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.7919966579631555,
+            "evidence_hit": false,
+            "top_evidence": "Siaga Level 3! Ini Kondisi Gunung Merapi Terbaru"
+          },
+          {
+            "id": 18,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Erupsi Merapi pada 11 Maret 2023 membuat Bandara Adisutjipto Yogyakarta ditutup sementara.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9572141548839335,
+            "evidence_hit": false,
+            "top_evidence": "4 Bandara di Yogyakarta dan Semarang Tak Terdampak Erupsi Merapi"
+          },
+          {
+            "id": 19,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "PPATK membekukan lebih dari 40 rekening yang terkait dengan Rafael Alun Trisambodo dan keluarganya.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.984523313808767,
+            "evidence_hit": true,
+            "top_evidence": "PPATK Blokir 40 Lebih Rekening Rafael Alun dan Keluarga dengan Nilai Transaksi Rp 500 Miliar"
+          },
+          {
+            "id": 20,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "PPATK tidak menemukan satu pun transaksi mencurigakan pada rekening Rafael Alun Trisambodo.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.6581992787414296,
+            "evidence_hit": false,
+            "top_evidence": "PPATK Ungkap Alasan Uang Rafael Alun Hasil Suap: Mata Uang Asing"
+          },
+          {
+            "id": 21,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "Rafael Alun Trisambodo telah divonis 14 tahun penjara oleh Pengadilan Tipikor.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.47482799718316965,
+            "evidence_hit": false,
+            "top_evidence": "Rafael Alun Terancam Pidana Maksimal 20 Tahun Penjara"
+          },
+          {
+            "id": 22,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Kejati DKI Jakarta menyatakan tidak ada peluang restorative justice bagi tersangka Mario Dandy dan Shane Lukas.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.4462119596136122,
+            "evidence_hit": true,
+            "top_evidence": "Kejagung Tegaskan Tak Ada Restorative Justice untuk Mario dan Shane"
+          },
+          {
+            "id": 23,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Kejati DKI Jakarta menyetujui penyelesaian kasus Mario Dandy melalui restorative justice.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.34995785403188834,
+            "evidence_hit": false,
+            "top_evidence": "Mengenal Apa Itu Restorative Justice yang Ditawarkan Kajati DKI Jakarta di Kasus Mario Dandy"
+          },
+          {
+            "id": 24,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Mario Dandy menyampaikan permintaan maaf secara langsung kepada keluarga David di kantor Kejati DKI.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.7919110611912046,
+            "evidence_hit": false,
+            "top_evidence": "Kala Ayah David Sempat Beri Ampun Mario Dandy, Kini Tutup Pintu Maaf Rapat-rapat"
+          },
+          {
+            "id": 25,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Sidang isbat yang dipimpin Menteri Agama menetapkan 1 Ramadan 1444 H jatuh pada Kamis, 23 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.47308714200761637,
+            "evidence_hit": false,
+            "top_evidence": "RESMI! Kemenag Umumkan 1 Ramadan 1444 Hijriah Jatuh Pada Kamis Ini"
+          },
+          {
+            "id": 26,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Pemerintah menetapkan 1 Ramadan 1444 H jatuh pada hari Selasa, 21 Maret 2023.",
+            "gold": "REFUTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.5876490660908427,
+            "evidence_hit": false,
+            "top_evidence": "Puasa Dilaksanakan Serentak, Lebaran Berpotensi Ada yang Berbeda"
+          },
+          {
+            "id": 27,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Sidang isbat awal Ramadan 1444 H dihadiri oleh perwakilan 30 negara sahabat.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9941388994602045,
+            "evidence_hit": false,
+            "top_evidence": "Link Live Streaming Sidang Isbat Kemenang 1 Ramadan 1444 H"
+          },
+          {
+            "id": 28,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Harga Pertamax di wilayah Jabodetabek naik menjadi Rp 13.300 per liter mulai 1 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.8275372222312161,
+            "evidence_hit": true,
+            "top_evidence": "Harga BBM Pertamax dan Pertamax Turbo Naik Lagi per Hari Ini, Cek Deretannya"
+          },
+          {
+            "id": 29,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Pertamina menurunkan harga Pertamax di Jabodetabek menjadi Rp 11.300 per liter per 1 Maret 2023.",
+            "gold": "REFUTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6589488212564306,
+            "evidence_hit": false,
+            "top_evidence": "Pengumuman! Harga Pertamax Turbo Turun Jadi Rp15.000/Liter di Jabodetabek, Berlaku 1 April"
+          },
+          {
+            "id": 30,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Pemerintah berencana menaikkan harga Pertalite menjadi Rp 12.000 per liter pada bulan depan.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.7516646190336633,
+            "evidence_hit": true,
+            "top_evidence": "Bukan Rp 10.000, Ternyata Segini Harga Asli BBM Pertalite"
+          },
+          {
+            "id": 31,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Kemenhub memprediksi pergerakan masyarakat selama Lebaran 2023 mencapai 123,8 juta orang.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6608916535716719,
+            "evidence_hit": false,
+            "top_evidence": "5 Daerah dengan Tujuan Mudik Lebaran Paling Tinggi"
+          },
+          {
+            "id": 32,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Jumlah pergerakan masyarakat saat Lebaran 2023 diprediksi turun dibandingkan Lebaran 2022.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.6736635682517406,
+            "evidence_hit": true,
+            "top_evidence": "Pemudik 'Meledak' 2023, Orang Ramai-Ramai Mobil Pribadi!"
+          },
+          {
+            "id": 33,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Pemerintah memberlakukan larangan mudik bagi aparatur sipil negara pada Lebaran 2023.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.4728674790281616,
+            "evidence_hit": false,
+            "top_evidence": "Sederet Kepala Daerah Larang ASN Gunakan Mobil Dinas Buat Mudik Lebaran"
+          },
+          {
+            "id": 34,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Kementerian Perhubungan mengalokasikan anggaran Rp 20 miliar untuk program mudik gratis Lebaran 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.41416419786973074,
+            "evidence_hit": true,
+            "top_evidence": "Gelar Program Mudik Gratis, Kemenhub Kucurkan Dana Rp 20 Miliar"
+          },
+          {
+            "id": 35,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Kementerian Perhubungan meniadakan program mudik gratis pada Lebaran 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9248068450767579,
+            "evidence_hit": false,
+            "top_evidence": "Daftar Mudik Gratis Lebaran yang Masih Dibuka, Jangan Sampai Kehabisan Kuota!"
+          },
+          {
+            "id": 36,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Pendaftaran mudik gratis Kemenhub hanya dapat dilakukan melalui kantor pos.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.8728657252376604,
+            "evidence_hit": false,
+            "top_evidence": "Cara dan Syarat Daftar Mudik Gratis Kemenhub yang Dibuka Siang Ini"
+          },
+          {
+            "id": 37,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA mencabut status Indonesia sebagai tuan rumah Piala Dunia U-20 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.7943686653975199,
+            "evidence_hit": false,
+            "top_evidence": "Warga Kecewa PD U-20 Batal di Indonesia, Sindir Ego Politik"
+          },
+          {
+            "id": 38,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA menegaskan Indonesia tetap menjadi tuan rumah Piala Dunia U-20 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.992667843863874,
+            "evidence_hit": false,
+            "top_evidence": "Perjalanan Indonesia Jadi Tuan Rumah Piala Dunia U-20, Terancam Mubazir?"
+          },
+          {
+            "id": 39,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA menjatuhkan denda sebesar 10 juta dolar AS kepada PSSI.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.8069400157003689,
+            "evidence_hit": false,
+            "top_evidence": "Dapat Kartu Kuning, Segini Dana FIFA RI yang Dibekukan"
+          },
+          {
+            "id": 40,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "BMKG melaporkan gempa bermagnitudo 6,3 mengguncang Keerom, Papua.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.789191252979828,
+            "evidence_hit": true,
+            "top_evidence": "Gempa Magnitudo 4,7 Guncang Keerom Papua"
+          },
+          {
+            "id": 41,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "Gempa yang mengguncang Keerom, Papua, hanya bermagnitudo 3,1.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9956291410306337,
+            "evidence_hit": false,
+            "top_evidence": "Gempa M 4,9 Kembali Guncang Keerom Papua"
+          },
+          {
+            "id": 42,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "Gempa di Keerom, Papua, merusak puluhan rumah warga.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9819971584595107,
+            "evidence_hit": true,
+            "top_evidence": "Gempa M 4,9 Kembali Guncang Keerom Papua"
+          },
+          {
+            "id": 43,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Polisi menangkap 18 pelajar yang hendak tawuran di Kalideres, Jakarta Barat.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.5023866015502992,
+            "evidence_hit": true,
+            "top_evidence": "Bawa Linggis hingga Samurai, Puluhan Remaja di Cipete dan Kalibata Ditangkap Polisi Gegara Hendak Tawuran saat Sahur"
+          },
+          {
+            "id": 44,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Polisi tidak menemukan satu pun senjata tajam dari pelajar yang ditangkap di Kalideres.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9339537400516458,
+            "evidence_hit": true,
+            "top_evidence": "Belasan Pelajar Ditangkap Saat Akan Tawuran di Jakbar, 3 Sajam Disita"
+          },
+          {
+            "id": 45,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Para pelajar yang ditangkap di Kalideres berasal dari tiga sekolah kejuruan yang berbeda.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6231823321179307,
+            "evidence_hit": false,
+            "top_evidence": "Live Instagram Bacok Pelajar di Sukabumi, 3 Remaja Ditangkap Polisi"
+          },
+          {
+            "id": 46,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Timnas sepak bola Indonesia dipastikan menjuarai Piala Dunia 2030.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.7083990934004047,
+            "evidence_hit": false,
+            "top_evidence": "Sepak Bola dan Politik: Sejarah Perjumpaan Abadi"
+          },
+          {
+            "id": 47,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Peneliti Indonesia menemukan spesies dinosaurus baru di Pulau Sumba.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.7652003494119861,
+            "evidence_hit": false,
+            "top_evidence": "Pengunjung Resto China Ini Cermat Banget, Ungkap Lusinan Jejak Dinosaurus yang Hidup 100 Juta Tahun Lalu"
+          },
+          {
+            "id": 48,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Kota Bandung akan membangun kereta gantung bawah laut pertama di dunia.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9971940737237207,
+            "evidence_hit": false,
+            "top_evidence": "51 Persen Tiket Kereta Angkutan Lebaran dari Bandung Sudah Dipesan"
+          }
+        ]
+      },
+      "mean": {
+        "n": 48,
+        "accuracy": 0.6875,
+        "macro_precision": 0.7234892787524366,
+        "macro_recall": 0.6851851851851852,
+        "macro_f1": 0.6855865153078775,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.8888888888888888,
+            "recall": 0.5333333333333333,
+            "f1-score": 0.6666666666666666,
+            "support": 15.0
+          },
+          "REFUTED": {
+            "precision": 0.631578947368421,
+            "recall": 0.8,
+            "f1-score": 0.7058823529411765,
+            "support": 15.0
+          },
+          "NOT_ENOUGH_INFO": {
+            "precision": 0.65,
+            "recall": 0.7222222222222222,
+            "f1-score": 0.6842105263157895,
+            "support": 18.0
+          },
+          "accuracy": 0.6875,
+          "macro avg": {
+            "precision": 0.7234892787524366,
+            "recall": 0.6851851851851852,
+            "f1-score": 0.6855865153078775,
+            "support": 48.0
+          },
+          "weighted avg": {
+            "precision": 0.7188961988304093,
+            "recall": 0.6875,
+            "f1-score": 0.685500515995872,
+            "support": 48.0
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "REFUTED",
+          "NOT_ENOUGH_INFO"
+        ],
+        "confusion_matrix": [
+          [
+            8,
+            3,
+            4
+          ],
+          [
+            0,
+            12,
+            3
+          ],
+          [
+            1,
+            4,
+            13
+          ]
+        ],
+        "predictions": [
+          {
+            "id": 1,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Presiden Jokowi memerintahkan Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Depo Pertamina Plumpang.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.40550290029495956,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 2,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Presiden Jokowi melarang Wakil Presiden Ma'ruf Amin mengunjungi lokasi kebakaran Depo Pertamina Plumpang.",
+            "gold": "REFUTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.5345299176173285,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 3,
+            "topic": "Kebakaran Plumpang: instruksi Presiden",
+            "claim": "Wakil Presiden Ma'ruf Amin meninjau lokasi kebakaran Plumpang bersama Gubernur Jawa Barat Ridwan Kamil.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.6461064130067825,
+            "evidence_hit": true,
+            "top_evidence": "Jokowi Perintahkan Wapres Ma'ruf Amin Tinjau Lokasi Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 4,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Hingga 16 Maret 2023, korban meninggal akibat kebakaran Depo Plumpang bertambah menjadi 25 orang.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6087828778661788,
+            "evidence_hit": true,
+            "top_evidence": "Update Kebakaran Depo Plumpang: 25 Orang Meninggal, 23 Orang Dirawat di Rumah Sakit"
+          },
+          {
+            "id": 5,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Kebakaran Depo Plumpang sama sekali tidak menyebabkan korban meninggal dunia.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.5716793954372407,
+            "evidence_hit": false,
+            "top_evidence": "Pertamina Kucurkan Rp1,72 M Untuk Korban Kebakaran Depo Plumpang"
+          },
+          {
+            "id": 6,
+            "topic": "Kebakaran Plumpang: jumlah korban",
+            "claim": "Kebakaran Depo Plumpang dipastikan disebabkan oleh sambaran petir.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.7040204048156737,
+            "evidence_hit": false,
+            "top_evidence": "Hasil Investigasi Kebakaran Depo BBM Plumpang hingga Suplai 19 Daerah Terganggu, Berikut 5 Faktanya"
+          },
+          {
+            "id": 7,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "KPU sedang menyiapkan memori banding atas putusan PN Jakarta Pusat yang memerintahkan penundaan pemilu.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.7249525681138039,
+            "evidence_hit": true,
+            "top_evidence": "KPU Siapkan Memori Banding atas Putusan Penundaan Pemilu PN Jakarta Pusat"
+          },
+          {
+            "id": 8,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "KPU menerima putusan PN Jakarta Pusat dan memutuskan tidak akan mengajukan banding.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.8847448468208313,
+            "evidence_hit": true,
+            "top_evidence": "KPU Siapkan Memori Banding atas Putusan Penundaan Pemilu PN Jakarta Pusat"
+          },
+          {
+            "id": 9,
+            "topic": "Putusan penundaan Pemilu: banding KPU",
+            "claim": "Pengadilan Tinggi DKI Jakarta telah mengabulkan banding yang diajukan KPU.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "SUPPORTED",
+            "confidence": 0.9270212650299073,
+            "evidence_hit": false,
+            "top_evidence": "Pengadilan Tinggi DKI Batalkan Putusan PN Jakpus soal Penundaan Pemilu"
+          },
+          {
+            "id": 10,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Ketua Panpel Arema FC Abdul Haris dijatuhi hukuman penjara satu setengah tahun dalam kasus Tragedi Kanjuruhan.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.5606074035167694,
+            "evidence_hit": true,
+            "top_evidence": "Vonis 1 Tahun Penjara atas Tragedi Kanjuruhan yang Tewaskan 135 Orang"
+          },
+          {
+            "id": 11,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Ketua Panpel Arema FC Abdul Haris divonis bebas oleh majelis hakim dalam kasus Tragedi Kanjuruhan.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.7626156076788903,
+            "evidence_hit": false,
+            "top_evidence": "Deret Vonis Para Terdakwa Tragedi Kanjuruhan, Ada yang Bebas"
+          },
+          {
+            "id": 12,
+            "topic": "Tragedi Kanjuruhan: vonis Ketua Panpel",
+            "claim": "Abdul Haris langsung mengajukan banding ke Pengadilan Tinggi Jawa Timur setelah vonis dibacakan.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.5648895304650069,
+            "evidence_hit": false,
+            "top_evidence": "Putusan Banding Ferdy Sambo Cs Dibacakan Pengadilan 12 April"
+          },
+          {
+            "id": 13,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Longsor di Pulau Serasan, Natuna, menyebabkan sedikitnya sepuluh orang meninggal dunia.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9989709973335266,
+            "evidence_hit": true,
+            "top_evidence": "Korban Meninggal Longsor Natuna Bertambah Jadi 15 Orang, 50 Masih Tertimbun"
+          },
+          {
+            "id": 14,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Bencana longsor di Pulau Serasan tidak menimbulkan korban jiwa maupun korban hilang.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.993439257144928,
+            "evidence_hit": false,
+            "top_evidence": "Update Korban Longsor Natuna: 46 Meninggal dan 9 Orang Hilang"
+          },
+          {
+            "id": 15,
+            "topic": "Longsor Pulau Serasan, Natuna",
+            "claim": "Longsor di Pulau Serasan dipicu oleh aktivitas tambang pasir ilegal.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.8806338429450989,
+            "evidence_hit": true,
+            "top_evidence": "Respons Aduan Warga Soal Galian C Gunung Sindoro, Ganjar: Kita Akan Tindak Tegas"
+          },
+          {
+            "id": 16,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Warga diminta menjauhi radius 7 km dari puncak Merapi setelah awan panas guguran pada 11 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6160873979330063,
+            "evidence_hit": true,
+            "top_evidence": "Merapi Erupsi Lontarkan Guyuran Lava 1.500 Meter, Zona Bahaya 7 Km"
+          },
+          {
+            "id": 17,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Gunung Merapi tidak menunjukkan aktivitas apa pun pada 11 Maret 2023 sehingga warga bebas mendekati puncak.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.7942172884941102,
+            "evidence_hit": false,
+            "top_evidence": "Siaga Level 3! Ini Kondisi Gunung Merapi Terbaru"
+          },
+          {
+            "id": 18,
+            "topic": "Erupsi Gunung Merapi 11 Maret",
+            "claim": "Erupsi Merapi pada 11 Maret 2023 membuat Bandara Adisutjipto Yogyakarta ditutup sementara.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9462469696998597,
+            "evidence_hit": false,
+            "top_evidence": "4 Bandara di Yogyakarta dan Semarang Tak Terdampak Erupsi Merapi"
+          },
+          {
+            "id": 19,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "PPATK membekukan lebih dari 40 rekening yang terkait dengan Rafael Alun Trisambodo dan keluarganya.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.9845743894577026,
+            "evidence_hit": true,
+            "top_evidence": "Arus Transaksi Janggal di Rekening Rafael Alun Capai Rp 500 M, PPATK: Kemungkinan Bertambah"
+          },
+          {
+            "id": 20,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "PPATK tidak menemukan satu pun transaksi mencurigakan pada rekening Rafael Alun Trisambodo.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.7248064339160919,
+            "evidence_hit": false,
+            "top_evidence": "Lima Hal Seputar Arus Transaksi Janggal Rafael Alun Senilai Rp 500 Miliar"
+          },
+          {
+            "id": 21,
+            "topic": "Transaksi janggal Rafael Alun",
+            "claim": "Rafael Alun Trisambodo telah divonis 14 tahun penjara oleh Pengadilan Tipikor.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.4713753074407578,
+            "evidence_hit": false,
+            "top_evidence": "Rafael Alun Terancam Pidana Maksimal 20 Tahun Penjara"
+          },
+          {
+            "id": 22,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Kejati DKI Jakarta menyatakan tidak ada peluang restorative justice bagi tersangka Mario Dandy dan Shane Lukas.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.44520615823566917,
+            "evidence_hit": true,
+            "top_evidence": "Dandy dan Shane Tak Akan Dapat Restorative Justice, Begini Alasannya"
+          },
+          {
+            "id": 23,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Kejati DKI Jakarta menyetujui penyelesaian kasus Mario Dandy melalui restorative justice.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.36890814490616325,
+            "evidence_hit": false,
+            "top_evidence": "Mengenal Apa Itu Restorative Justice yang Ditawarkan Kajati DKI Jakarta di Kasus Mario Dandy"
+          },
+          {
+            "id": 24,
+            "topic": "Kasus Mario Dandy: restorative justice",
+            "claim": "Mario Dandy menyampaikan permintaan maaf secara langsung kepada keluarga David di kantor Kejati DKI.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.7946577548980713,
+            "evidence_hit": false,
+            "top_evidence": "Kala Ayah David Sempat Beri Ampun Mario Dandy, Kini Tutup Pintu Maaf Rapat-rapat"
+          },
+          {
+            "id": 25,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Sidang isbat yang dipimpin Menteri Agama menetapkan 1 Ramadan 1444 H jatuh pada Kamis, 23 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.46195129603147506,
+            "evidence_hit": false,
+            "top_evidence": "RESMI! Kemenag Umumkan 1 Ramadan 1444 Hijriah Jatuh Pada Kamis Ini"
+          },
+          {
+            "id": 26,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Pemerintah menetapkan 1 Ramadan 1444 H jatuh pada hari Selasa, 21 Maret 2023.",
+            "gold": "REFUTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6075277492403984,
+            "evidence_hit": false,
+            "top_evidence": "Puasa Dilaksanakan Serentak, Lebaran Berpotensi Ada yang Berbeda"
+          },
+          {
+            "id": 27,
+            "topic": "Penetapan 1 Ramadan 1444 H",
+            "claim": "Sidang isbat awal Ramadan 1444 H dihadiri oleh perwakilan 30 negara sahabat.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9940603137016296,
+            "evidence_hit": false,
+            "top_evidence": "Link Live Streaming Sidang Isbat Kemenang 1 Ramadan 1444 H"
+          },
+          {
+            "id": 28,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Harga Pertamax di wilayah Jabodetabek naik menjadi Rp 13.300 per liter mulai 1 Maret 2023.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.8072303906083108,
+            "evidence_hit": true,
+            "top_evidence": "Harga BBM Pertamax dan Pertamax Turbo Naik Lagi per Hari Ini, Cek Deretannya"
+          },
+          {
+            "id": 29,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Pertamina menurunkan harga Pertamax di Jabodetabek menjadi Rp 11.300 per liter per 1 Maret 2023.",
+            "gold": "REFUTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6702008292078971,
+            "evidence_hit": false,
+            "top_evidence": "Pengumuman! Harga Pertamax Turbo Turun Jadi Rp15.000/Liter di Jabodetabek, Berlaku 1 April"
+          },
+          {
+            "id": 30,
+            "topic": "Harga BBM non-subsidi 1 Maret 2023",
+            "claim": "Pemerintah berencana menaikkan harga Pertalite menjadi Rp 12.000 per liter pada bulan depan.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.759283745288849,
+            "evidence_hit": true,
+            "top_evidence": "Bukan Rp 10.000, Ternyata Segini Harga Asli BBM Pertalite"
+          },
+          {
+            "id": 31,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Kemenhub memprediksi pergerakan masyarakat selama Lebaran 2023 mencapai 123,8 juta orang.",
+            "gold": "SUPPORTED",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6466003999114037,
+            "evidence_hit": false,
+            "top_evidence": "5 Daerah dengan Tujuan Mudik Lebaran Paling Tinggi"
+          },
+          {
+            "id": 32,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Jumlah pergerakan masyarakat saat Lebaran 2023 diprediksi turun dibandingkan Lebaran 2022.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.6702416900545358,
+            "evidence_hit": true,
+            "top_evidence": "123 Juta Orang Bakal Pulang Kampung, Ini Tips Mudik Nyaman dari Menhub Budi"
+          },
+          {
+            "id": 33,
+            "topic": "Proyeksi pemudik Lebaran 2023",
+            "claim": "Pemerintah memberlakukan larangan mudik bagi aparatur sipil negara pada Lebaran 2023.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.4855001503601671,
+            "evidence_hit": false,
+            "top_evidence": "Sederet Kepala Daerah Larang ASN Gunakan Mobil Dinas Buat Mudik Lebaran"
+          },
+          {
+            "id": 34,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Kementerian Perhubungan mengalokasikan anggaran Rp 20 miliar untuk program mudik gratis Lebaran 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.38927218291210014,
+            "evidence_hit": true,
+            "top_evidence": "Gelar Program Mudik Gratis, Kemenhub Kucurkan Dana Rp 20 Miliar"
+          },
+          {
+            "id": 35,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Kementerian Perhubungan meniadakan program mudik gratis pada Lebaran 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9303581476211549,
+            "evidence_hit": false,
+            "top_evidence": "Daftar Mudik Gratis Lebaran yang Masih Dibuka, Jangan Sampai Kehabisan Kuota!"
+          },
+          {
+            "id": 36,
+            "topic": "Program mudik gratis Kemenhub",
+            "claim": "Pendaftaran mudik gratis Kemenhub hanya dapat dilakukan melalui kantor pos.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "REFUTED",
+            "confidence": 0.9065627694129944,
+            "evidence_hit": false,
+            "top_evidence": "Cara Daftar Mudik Gratis Kemenhub 2023"
+          },
+          {
+            "id": 37,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA mencabut status Indonesia sebagai tuan rumah Piala Dunia U-20 2023.",
+            "gold": "SUPPORTED",
+            "pred": "SUPPORTED",
+            "confidence": 0.7739679869089741,
+            "evidence_hit": false,
+            "top_evidence": "Sandiaga-AHY Sebut Sejumlah Kerugian Buntut Indonesia Batal Jadi Tuan Rumah Piala Dunia U-20 2023"
+          },
+          {
+            "id": 38,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA menegaskan Indonesia tetap menjadi tuan rumah Piala Dunia U-20 2023.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9928911924362184,
+            "evidence_hit": false,
+            "top_evidence": "3 Fakta Stadion RI Siap Jadi Tuan Rumah Piala Dunia"
+          },
+          {
+            "id": 39,
+            "topic": "Pencabutan tuan rumah Piala Dunia U-20",
+            "claim": "FIFA menjatuhkan denda sebesar 10 juta dolar AS kepada PSSI.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.8104255139827728,
+            "evidence_hit": false,
+            "top_evidence": "Dapat Kartu Kuning, Segini Dana FIFA RI yang Dibekukan"
+          },
+          {
+            "id": 40,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "BMKG melaporkan gempa bermagnitudo 6,3 mengguncang Keerom, Papua.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.7909790793433786,
+            "evidence_hit": true,
+            "top_evidence": "Gempa Magnitudo 4,7 Guncang Keerom Papua"
+          },
+          {
+            "id": 41,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "Gempa yang mengguncang Keerom, Papua, hanya bermagnitudo 3,1.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9958001852035523,
+            "evidence_hit": false,
+            "top_evidence": "Gempa M4,1 Guncang Keerom Papua"
+          },
+          {
+            "id": 42,
+            "topic": "Gempa Keerom, Papua",
+            "claim": "Gempa di Keerom, Papua, merusak puluhan rumah warga.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9818440198898315,
+            "evidence_hit": true,
+            "top_evidence": "Gempa M 4,9 Kembali Guncang Keerom Papua"
+          },
+          {
+            "id": 43,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Polisi menangkap 18 pelajar yang hendak tawuran di Kalideres, Jakarta Barat.",
+            "gold": "SUPPORTED",
+            "pred": "REFUTED",
+            "confidence": 0.5428248226642609,
+            "evidence_hit": true,
+            "top_evidence": "Polisi Tangkap Delapan Pelaku Penganiayaan Pelajar di Taman Sari Jakarta Barat"
+          },
+          {
+            "id": 44,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Polisi tidak menemukan satu pun senjata tajam dari pelajar yang ditangkap di Kalideres.",
+            "gold": "REFUTED",
+            "pred": "REFUTED",
+            "confidence": 0.9289037466049195,
+            "evidence_hit": true,
+            "top_evidence": "Belasan Pelajar Ditangkap Saat Akan Tawuran di Jakbar, 3 Sajam Disita"
+          },
+          {
+            "id": 45,
+            "topic": "Penangkapan pelajar tawuran Kalideres",
+            "claim": "Para pelajar yang ditangkap di Kalideres berasal dari tiga sekolah kejuruan yang berbeda.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.6141635805368424,
+            "evidence_hit": false,
+            "top_evidence": "Live Instagram Bacok Pelajar di Sukabumi, 3 Remaja Ditangkap Polisi"
+          },
+          {
+            "id": 46,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Timnas sepak bola Indonesia dipastikan menjuarai Piala Dunia 2030.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.7146523594856262,
+            "evidence_hit": false,
+            "top_evidence": "Sepak Bola dan Politik: Sejarah Perjumpaan Abadi"
+          },
+          {
+            "id": 47,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Peneliti Indonesia menemukan spesies dinosaurus baru di Pulau Sumba.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.748621028661728,
+            "evidence_hit": false,
+            "top_evidence": "Pengunjung Resto China Ini Cermat Banget, Ungkap Lusinan Jejak Dinosaurus yang Hidup 100 Juta Tahun Lalu"
+          },
+          {
+            "id": 48,
+            "topic": "Di luar cakupan korpus",
+            "claim": "Kota Bandung akan membangun kereta gantung bawah laut pertama di dunia.",
+            "gold": "NOT_ENOUGH_INFO",
+            "pred": "NOT_ENOUGH_INFO",
+            "confidence": 0.9971469879150392,
+            "evidence_hit": false,
+            "top_evidence": "51 Persen Tiket Kereta Angkutan Lebaran dari Bandung Sudah Dipesan"
+          }
+        ]
+      }
+    },
+    "evidence_recall": 0.4444444444444444
+  }
+}

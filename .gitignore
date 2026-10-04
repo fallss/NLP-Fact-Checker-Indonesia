@@ -1,0 +1,52 @@
+# =============================================================================
+# .gitignore — Indonesian News Fact-Checker
+# =============================================================================
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Dataset besar (>100MB dilarang oleh GitHub)
+data.csv
+*.csv.gz
+*.tar.gz
+*.zip
+
+# Cache komputasi retrieval & embedding lokal
+cache/
+*.npy
+*.npz
+
+# Folder backup & skrip utilitas migrasi internal
+_backup_v1/
+_backup_*/
+rename_docs.py
+*.tmp
+*.bak
+
+# Antarmuka Gradio & Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+.gradio/
+flagged/
+*.log
+
+# Editor & IDE configs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
