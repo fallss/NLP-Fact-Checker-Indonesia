@@ -66,42 +66,113 @@ confusion matrix: [`reports/confusion_matrices.png`](reports/confusion_matrices.
 
 ---
 
-## 🚀 Cara Menjalankan
+## 🚀 Cara Menjalankan Project
 
-```bash
-# 1. Aktifkan virtual environment (Windows PowerShell)
+Pilih salah satu cara menjalankan yang paling sesuai dengan kebutuhan Anda: **Versi Python (.py)** melalui Web App/CLI atau **Versi Jupyter Notebook (.ipynb)** untuk eksplorasi sel-per-sel.
+
+---
+
+### ⚙️ Persiapan Awal Lingkungan (Dilakukan Sekali Saja)
+
+Pastikan virtual environment telah aktif dan dependensi terpasang:
+
+```powershell
+# 1. Buka PowerShell di folder project dan aktifkan virtual environment
 .\venv\Scripts\Activate.ps1
 
-# 2. Install dependensi
+# 2. Instalasi dependensi (jika belum terpasang)
 pip install -r requirements.txt
 
-# 3. (Sekali saja) bangun indeks retrieval — ±10 menit di CPU, lalu di-cache di folder cache/
+# 3. Bangun indeks retrieval 32.000 berita (hanya 1x di awal, di-cache ke folder cache/)
 python -m fact_checker build-index
 ```
+> [!TIP]
+> Pembangunan indeks membutuhkan waktu ~8-10 menit di CPU. Setelah tersimpan di folder `cache/`, pemuatan indeks pada eksekusi berikutnya berlangsung instan (**hanya ~2 detik**).
 
-| Perintah | Fungsi |
-|---|---|
-| `python -m fact_checker check "klaim..."` | periksa satu klaim (`--no-explain`, `--json out.json`, `--save-plot shap.png`) |
-| `python -m fact_checker interactive` | mode tanya-jawab di terminal |
-| `python -m fact_checker demo` | 3 contoh klaim: benar, hoaks, di luar korpus |
-| `python -m fact_checker app` | **web app Gradio** di http://127.0.0.1:7860 (`--share` untuk link publik) |
-| `python -m fact_checker evaluate --compare-baseline` | evaluasi lengkap → folder `reports/` |
-| `python -m pytest tests` | unit test (tanpa perlu model) |
+---
 
-Opsi umum: `--max-articles 5000` (hemat RAM), `--top-passages 5`, `--aggregation max|weighted|mean`,
-`--device cuda`, `-v` (log detail). Skrip lama `python fact_checker/main.py` dan
-`python fact_checker/run_test.py` tetap berfungsi.
+### 🅰️ Pilihan 1: Menjalankan Program Python (`.py`)
 
-Contoh pemakaian sebagai library:
+#### 1. Web App Interaktif Modern (Gradio Dashboard) — *Sangat Direkomendasikan*
+Antarmuka visual modern dengan kartu bukti, probabilitas, dan visualisasi kata SHAP:
+```powershell
+# Jalankan server lokal
+python -m fact_checker app
 
+# Atau aktifkan tautan publik (bisa diakses siapa saja via internet selama 72 jam):
+python -m fact_checker app --share
+```
+👉 Buka di browser Anda: **`http://127.0.0.1:7860`**
+
+#### 2. Terminal CLI (Cepat & Ringkas Tanpa Browser)
+```powershell
+# A. Periksa satu klaim langsung:
+python -m fact_checker check "Presiden Jokowi meresmikan Jalan Tol Trans Sumatera."
+
+# B. Mode Tanya-Jawab Interaktif di terminal:
+python -m fact_checker interactive
+
+# C. Mode Demo Otomatis (menguji 3 skenario: didukung, hoaks, di luar korpus):
+python -m fact_checker demo
+
+# D. Menjalankan Evaluasi Benchmark 48 Kasus Uji:
+python -m fact_checker evaluate --compare-baseline
+
+# E. Menjalankan Unit Test (pytest):
+python -m pytest tests
+```
+
+#### 3. Mengimpor sebagai Library Python pada Skrip Sendiri
+Buat file skrip Python (misal `test_cekklaim.py`) dan panggil engine `fact_checker`:
 ```python
 from fact_checker import FactChecker
+
+# Inisialisasi engine fact-checker
 fc = FactChecker()
-r = fc.check("FIFA mencabut status Indonesia sebagai tuan rumah Piala Dunia U-20 2023.")
-print(r.verdict.label, f"{r.verdict.confidence:.0%}", r.verdict.reason)
-for ev in r.evidences:
-    print(ev.source, ev.title, ev.nli_label, f"{ev.relevance:.0%}")
+
+# Uji sebuah klaim
+result = fc.check("FIFA membatalkan status Indonesia sebagai tuan rumah Piala Dunia U-20 2023.")
+
+# Cetak hasil
+print(f"Verdict    : {result.verdict.label}")
+print(f"Confidence : {result.verdict.confidence:.1%}")
+print(f"Alasan     : {result.verdict.reason}")
+for i, ev in enumerate(result.evidences, 1):
+    penentu = " (👑 PENENTU)" if ev.is_decisive else ""
+    print(f"Bukti #{i}{penentu}: [{ev.source}] {ev.title} -> {ev.nli_label} ({ev.relevance:.1%})")
 ```
+Jalankan skrip:
+```powershell
+python test_cekklaim.py
+```
+
+---
+
+### 🅱️ Pilihan 2: Menjalankan Jupyter Notebook (`.ipynb`)
+
+File notebook terletak di: [`notebook_version/Fact_Checker_Full_Project.ipynb`](notebook_version/Fact_Checker_Full_Project.ipynb)
+
+Notebook ini berisi alur akademis menyeluruh: **EDA → Preprocessing → Hybrid Retrieval (BM25 + SBERT + RRF) → IndoBERT NLI → Agregasi FEVER → SHAP XAI → Evaluasi Kuantitatif → Web App tersemat**.
+
+#### Cara 1: Menggunakan VS Code (Paling Praktis)
+1. Buka folder project ini di **VS Code**.
+2. Buka file [`notebook_version/Fact_Checker_Full_Project.ipynb`](notebook_version/Fact_Checker_Full_Project.ipynb).
+3. Di pojok kanan atas jendela notebook, klik **Select Kernel** → pilih **Python Environments** → pilih kernel `Python 3.10.x ('venv': venv)`.
+4. Klik tombol **Run All** (atau jalankan sel satu per satu dari atas ke bawah menggunakan `Shift + Enter`).
+5. Di **Bagian 8**, hasil verifikasi akan langsung muncul dalam bentuk tabel terminal dan **kartu visual HTML**.
+6. Di **Bagian 12**, Web App Gradio akan langsung aktif dan interaktif di dalam output sel notebook!
+
+#### Cara 2: Menggunakan Jupyter Lab / Notebook Browser
+Jika Anda lebih terbiasa dengan antarmuka web Jupyter:
+```powershell
+# 1. Pastikan jupyter terpasang & buka server jupyter
+jupyter notebook
+# atau: jupyter lab
+```
+1. Browser akan terbuka otomatis di `http://localhost:8888`.
+2. Navigasikan ke folder `notebook_version/` lalu klik `Fact_Checker_Full_Project.ipynb`.
+3. Pastikan kernel yang dipilih adalah kernel virtual environment `venv`.
+4. Jalankan sel secara berurutan (`Shift + Enter`).
 
 ---
 
@@ -111,6 +182,7 @@ Untuk memudahkan pemahaman bagi dosen, penguji, rekan tim, maupun pengguna umum,
 
 | Dokumen | Deskripsi & Tujuan |
 |---|---|
+| 🚀 [**`PANDUAN_MENJALANKAN.md`**](PANDUAN_MENJALANKAN.md) | **Panduan Menjalankan (.py & .ipynb)**: Tutorial langkah demi langkah menjalankan Web App Gradio, Terminal CLI, dan Jupyter Notebook di VS Code / Jupyter Lab. |
 | 📘 [**`LAPORAN_UTS_FACT_CHECKER_NLP.md`**](LAPORAN_UTS_FACT_CHECKER_NLP.md) | **Laporan Resmi Akademis UTS**: Latar belakang, formulasi matematis, metodologi FEVER, bedah arsitektur IndoBERT & Entailment Verification (NLI) & Hybrid RRF, evaluasi kuantitatif lengkap, dan referensi ilmiah. |
 | 📖 [**`PANDUAN_LENGKAP_FACT_CHECKER.md`**](PANDUAN_LENGKAP_FACT_CHECKER.md) | **Panduan Lengkap Praktis**: Alur kerja hulu-ke-hilir, panduan 4 mode eksekusi, bedah antarmuka Web App, 10 skenario uji nyata, dan FAQ troubleshooting. |
 | 📝 [**`PANDUAN_PENGUJIAN_KLAIM.md`**](PANDUAN_PENGUJIAN_KLAIM.md) | **Koleksi Klaim Pengujian**: Daftar klaim fakta benar, hoaks/salah, dan netral yang siap disalin (*copy-paste*) lengkap dengan konteks beritanya. |
@@ -143,6 +215,7 @@ Project UTS/
 │   ├── evaluation_summary.md
 │   ├── evaluation_results.json
 │   └── confusion_matrices.png
+├── PANDUAN_MENJALANKAN.md                panduan ringkas eksekusi .py dan .ipynb
 ├── LAPORAN_UTS_FACT_CHECKER_NLP.md       laporan resmi akademis UTS NLP
 ├── PANDUAN_LENGKAP_FACT_CHECKER.md       panduan praktis & arsitektur sistem
 ├── PANDUAN_PENGUJIAN_KLAIM.md           daftar contoh klaim uji
