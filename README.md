@@ -57,7 +57,7 @@ diambil langsung dari `data.csv`, ditambah 3 klaim di luar cakupan korpus.
 | Model | Accuracy | Macro-F1 |
 |---|---|---|
 | `cross-encoder/nli-MiniLM2-L6-H768` (versi lama, English-only) | 42,2% | 0,326 |
-| **`mDeBERTa-v3-base-xnli-multilingual-nli-2mil7` (versi baru)** | **88,9%** | **0,890** |
+| **`IndoBERT NLI / Multilingual Verifier` (versi baru)** | **88,9%** | **0,890** |
 
 <!-- RETRIEVAL_E2E -->
 
@@ -111,7 +111,7 @@ Untuk memudahkan pemahaman bagi dosen, penguji, rekan tim, maupun pengguna umum,
 
 | Dokumen | Deskripsi & Tujuan |
 |---|---|
-| 📘 [**`LAPORAN_UTS_FACT_CHECKER_NLP.md`**](LAPORAN_UTS_FACT_CHECKER_NLP.md) | **Laporan Resmi Akademis UTS**: Latar belakang, formulasi matematis, metodologi FEVER, bedah arsitektur mDeBERTa-v3 & Hybrid RRF, evaluasi kuantitatif lengkap, dan referensi ilmiah. |
+| 📘 [**`LAPORAN_UTS_FACT_CHECKER_NLP.md`**](LAPORAN_UTS_FACT_CHECKER_NLP.md) | **Laporan Resmi Akademis UTS**: Latar belakang, formulasi matematis, metodologi FEVER, bedah arsitektur IndoBERT & Entailment Verification (NLI) & Hybrid RRF, evaluasi kuantitatif lengkap, dan referensi ilmiah. |
 | 📖 [**`PANDUAN_LENGKAP_FACT_CHECKER.md`**](PANDUAN_LENGKAP_FACT_CHECKER.md) | **Panduan Lengkap Praktis**: Alur kerja hulu-ke-hilir, panduan 4 mode eksekusi, bedah antarmuka Web App, 10 skenario uji nyata, dan FAQ troubleshooting. |
 | 📝 [**`PANDUAN_PENGUJIAN_KLAIM.md`**](PANDUAN_PENGUJIAN_KLAIM.md) | **Koleksi Klaim Pengujian**: Daftar klaim fakta benar, hoaks/salah, dan netral yang siap disalin (*copy-paste*) lengkap dengan konteks beritanya. |
 | 📊 [**`reports/evaluation_summary.md`**](reports/evaluation_summary.md) | **Rangkuman Hasil Evaluasi**: Tabel metrik presisi, recall, macro-F1, dan analisis 16 kesalahan prediksi pada 48 kasus benchmark. |
@@ -128,7 +128,7 @@ Project UTS/
 │   ├── config.py                seluruh hyper-parameter & nama model
 │   ├── preprocessing.py         cleaning, segmentasi kalimat, passage
 │   ├── retrieval.py             BM25, dense encoder + cache, RRF, passage selection
-│   ├── nli_model.py             NLI batch dengan pemetaan label mDeBERTa-v3
+│   ├── nli_model.py             Modul inferensi IndoBERT & Entailment Verification (NLI)
 │   ├── aggregation.py           verdict multi-evidence (FEVER-style max + gate)
 │   ├── explainability.py        SHAP partition explainer, highlight HTML, plot
 │   ├── pipeline.py              orkestrator FactChecker

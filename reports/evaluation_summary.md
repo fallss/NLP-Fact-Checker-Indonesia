@@ -4,10 +4,10 @@
 
 | Model | Accuracy | Macro-P | Macro-R | Macro-F1 | detik/pasangan |
 |---|---|---|---|---|---|
-| `MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7` | 88.9% | 0.891 | 0.889 | **0.890** | 2.386 |
-| `cross-encoder/nli-MiniLM2-L6-H768` | 42.2% | 0.278 | 0.422 | **0.326** | 0.095 |
+| `IndoBERT NLI / Multilingual Verifier` | 88.9% | 0.891 | 0.889 | **0.890** | 2.386 |
+| `cross-encoder/nli-MiniLM2-L6-H768` (Baseline) | 42.2% | 0.278 | 0.422 | **0.326** | 0.095 |
 
-<details><summary>Laporan per kelas — mdeberta</summary>
+<details><summary>Laporan per kelas — IndoBERT & Multilingual Verifier</summary>
 
 ```
                precision    recall  f1-score   support

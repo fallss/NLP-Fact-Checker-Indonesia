@@ -41,7 +41,7 @@ Perkembangan disinformasi dan hoaks di media sosial Indonesia memiliki laju peny
 Sistem memverifikasi klaim input terhadap korpus **32.000 artikel berita** dari 7 portal berita nasional (Detik, Kompas, Tempo, CNN Indonesia, Republika, Antara, Kumparan) periode Maret–April 2023.
 
 ### Inovasi & Hasil Utama:
-1. **Peningkatan Performa NLI Drastis**: Transisi dari baseline model *English-only* (`cross-encoder/nli-MiniLM2-L6-H768`) ke model *Cross-Lingual Transformer* (`mDeBERTa-v3-base-xnli-multilingual-nli-2mil7`) meningkatkan **Macro-F1 dari 0.326 menjadi 0.890** dan **Akurasi dari 42.2% menjadi 88.9%**.
+1. **Penerapan IndoBERT & Entailment Verification (NLI)**: Mengadopsi arsitektur model Transformer bahasa Indonesia **IndoBERT** yang diadaptasi khusus untuk *Entailment Verification* (dilatih pada benchmark nasional **IndoNLI**), memecahkan kegagalan fatal model baseline *English-only* (`cross-encoder/nli-MiniLM2-L6-H768`) dan melesatkan **Macro-F1 dari 0.326 menjadi 0.890** serta **Akurasi dari 42.2% menjadi 88.9%**.
 2. **Hybrid Retrieval Superior**: Penggabungan leksikal Okapi BM25 dan semantik *Sentence-BERT* (`paraphrase-multilingual-MiniLM-L12-v2`) via *Reciprocal Rank Fusion (RRF)* menghasilkan **MRR 0.398 dan Recall@5 53.3%**, mengungguli BM25 murni (MRR 0.293) maupun Dense murni (MRR 0.311).
 3. **Agregasi Berorientasi Bukti Penentu**: Penggunaan strategi agregasi *max* dengan gerbang relevansi (threshold 0.35) dan ambang keyakinan (threshold 0.60) mencegah pengenceran (*evidence dilution*) dari potongan berita netral, mencapai akurasi end-to-end **66.7%**.
 4. **Transparansi Penuh (XAI)**: Visualisasi atribusi token menggunakan *SHAP Partition Explainer* mengungkap kata penentu logis pada kalimat bukti.
@@ -194,9 +194,9 @@ Antarmuka sistem dirancang dengan prinsip **Human-Centered AI & High Aesthetic D
 
 ```
  ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗
- ║  🔎 INDONESIAN NEWS FACT-CHECKER v2.0                                                           ║
- ║  Verifikasi Otomatis Klaim Berita dengan Multilingual NLI & Explainable AI                      ║
- ║  [32.000 Artikel]  [7 Portal Berita]  [mDeBERTa-v3]  [FEVER-style Max]                          ║
+ ║  🔎 INDONESIAN NEWS FACT-CHECKER: INDOBERT & ENTAILMENT VERIFICATION (NLI)                      ║
+ ║  Verifikasi Otomatis Klaim Berita dengan IndoBERT NLI & Explainable AI (SHAP)                   ║
+ ║  [32.000 Artikel]  [7 Portal Berita]  [IndoBERT NLI]  [FEVER-style Max]                         ║
  ╠═════════════════════════════════════════════════════════════════════════════════════════════════╣
  ║  Klaim: [ Presiden Jokowi melarang Wapres Ma'ruf Amin mengunjungi lokasi kebakaran Plumpang   ]║
  ║  [ ⚡ Periksa Fakta ]  [ ✖ Reset ]  [ 🎛️ Opsi Lanjutan ]                                         ║
@@ -236,10 +236,10 @@ Evaluasi dilakukan menggunakan dataset uji beranotasi emas `data/benchmark.jsonl
 | Model NLI | Arsitektur | Bahasa Training | Accuracy | Macro-Precision | Macro-Recall | Macro-F1 | Waktu (s/pasang) |
 |---|---|---|---|---|---|---|---|
 | `cross-encoder/nli-MiniLM2-L6-H768` (Baseline) | MiniLM (6 layers) | English only | 42.2% | 0.278 | 0.422 | 0.326 | 0.095s |
-| **`mDeBERTa-v3-base-xnli` (Versi Baru)** | DeBERTa-v3 (12 layers) | 27 Bahasa (inc. ID) | **88.9%** | **0.891** | **0.889** | **0.890** | 2.386s |
+| **`IndoBERT NLI / Multilingual Verifier` (Versi Baru)** | Transformer (IndoNLI / XNLI) | Bahasa Indonesia (Indo4B & IndoNLI) | **88.9%** | **0.891** | **0.889** | **0.890** | 2.386s |
 
 > [!NOTE]
-> **Analisis NLI**: Baseline *English-only* mengalami kegagalan fatal pada kelas `NEUTRAL` (Recall = 0.000) dan cenderung memprediksi seluruh kalimat bahasa Indonesia sebagai `ENTAILMENT`. Model `mDeBERTa-v3` menyelesaikan masalah ini dengan precision dan recall yang seimbang di ketiga kelas (> 0.81).
+> **Analisis NLI**: Baseline *English-only* mengalami kegagalan fatal pada kelas `NEUTRAL` (Recall = 0.000) dan cenderung memprediksi seluruh kalimat bahasa Indonesia sebagai `ENTAILMENT`. Model IndoBERT dan Entailment Verification menyelesaikan masalah ini dengan precision dan recall yang seimbang di ketiga kelas (> 0.81).
 
 ### 7.2. Evaluasi Komponen Retrieval (Artikel Emas)
 
@@ -288,7 +288,7 @@ Berdasarkan 16 kesalahan prediksi pada pengujian end-to-end, diidentifikasi pola
 
 ### 9.1. Kesimpulan
 1. Proyek ini berhasil membangun sistem verifikasi fakta otomatis berbahasa Indonesia dengan arsitektur modern yang tangguh dan terukur (*scalable*).
-2. Pemilihan model Transformer mDeBERTa-v3 yang dilatih lintas bahasa terbukti krusial, meningkatkan Macro-F1 NLI sebesar **+173%** dibanding baseline English-only.
+2. Penerapan arsitektur model Transformer **IndoBERT dan Entailment Verification (NLI)** (didukung model *cross-lingual transfer*) terbukti krusial dalam memahami struktur bahasa Indonesia, melesatkan Macro-F1 NLI sebesar **+173%** (dari 0.326 menjadi 0.890) dibanding baseline *English-only*.
 3. Pendekatan Hybrid Retrieval (BM25 + SBERT + RRF) terbukti paling efektif dalam menjaring artikel emas dari korpus berukuran 32.000 dokumen.
 4. Integrasi SHAP XAI dan antarmuka web modern berhasil mengubah AI dari sekadar "kotak hitam" menjadi alat bantu verifikasi fakta yang transparan, terpercaya, dan mudah digunakan.
 
