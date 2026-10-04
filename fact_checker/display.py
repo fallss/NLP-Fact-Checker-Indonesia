@@ -43,7 +43,7 @@ def print_banner(subtitle: str = "") -> None:
     body = Text.assemble(
         title,
         "\n",
-        ("Hybrid Retrieval (BM25 + SBERT) · Multilingual NLI (mDeBERTa-v3) · SHAP", "dim"),
+        ("Hybrid Retrieval (BM25 + SBERT) · IndoBERT & Entailment Verification (NLI) · SHAP", "dim"),
     )
     if subtitle:
         body.append(f"\n{subtitle}", style="italic")

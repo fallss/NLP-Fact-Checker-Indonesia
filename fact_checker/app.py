@@ -979,8 +979,8 @@ METHODOLOGY_MD = r"""
 3. **Sentence-Window Passage Selection**
    - Memecah artikel top kandidat menjadi passage berukuran 3 kalimat dengan pergeseran (stride) 2 kalimat.
    - Mengurutkan passage kandidat berdasarkan cosine similarity terhadap klaim.
-4. **Natural Language Inference (NLI)**
-   - Model multilingual SOTA: `MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7`.
+4. **IndoBERT & Entailment Verification (NLI)**
+   - Model utama: `LazarusNLP/indobert-lite-base-p1-indonli-multilingual-nli-distil-mdeberta` (IndoBERT yang di-fine-tune pada benchmark IndoNLI).
    - Menilai pasangan *(Premise = Passage, Hypothesis = Klaim)* menjadi distribusi probabilitas:
      $$P(\text{entailment}), \quad P(\text{neutral}), \quad P(\text{contradiction})$$
 5. **Multi-Evidence Aggregation (FEVER-Style)**
