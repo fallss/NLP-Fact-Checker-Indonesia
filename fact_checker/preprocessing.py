@@ -120,6 +120,9 @@ def preprocess_dataset(df: pd.DataFrame) -> pd.DataFrame:
     df = df.drop_duplicates(subset=["content"])
     df = df.drop_duplicates(subset=["title", "source"])
     df["id"] = df["id"].astype(int)
+    for col in ("title", "content", "summary", "source", "url", "date"):
+        if col in df.columns:
+            df[col] = df[col].astype(object)
     return df.reset_index(drop=True)
 
 

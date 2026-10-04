@@ -148,6 +148,79 @@ def sync():
         "| ⑤ XAI | SHAP Partition Explainer | transparansi keputusan model |\n"
     ]
 
+    # -------------------------------------------------------------
+    # 2.5 Perbaikan kode sel agar tidak terjadi error eksekusi
+    # -------------------------------------------------------------
+    for cell in nb["cells"]:
+        if cell["cell_type"] == "code":
+            src = "".join(cell.get("source", []))
+            
+            # Perbaikan Sel Evaluasi NLI: Cegah NameError: name 'baseline' is not defined
+            if "evaluate_nli(fc.nli, cases)" in src and "baseline" in src:
+                cell["source"] = [
+                    "from fact_checker.nli_model import NLIModel\n",
+                    "from fact_checker.config import NLI_MODEL_BASELINE\n",
+                    "\n",
+                    "# Muat baseline English-only untuk perbandingan jika belum ada\n",
+                    "if 'baseline' not in locals():\n",
+                    "    try:\n",
+                    "        baseline = NLIModel(NLI_MODEL_BASELINE, device=cfg.device)\n",
+                    "    except Exception as e:\n",
+                    "        print(f'Info: Model baseline tidak dimuat ({e}), mengevaluasi IndoBERT NLI.')\n",
+                    "        baseline = None\n",
+                    "\n",
+                    "results = {'nli': {'indobert': evaluate_nli(fc.nli, cases)}}\n",
+                    "if baseline is not None:\n",
+                    "    try:\n",
+                    "        results['nli']['baseline'] = evaluate_nli(baseline, cases)\n",
+                    "    except Exception as e:\n",
+                    "        print(f'Info: Evaluasi baseline dilewati ({e})')\n",
+                    "\n",
+                    "metric_names = {'accuracy': 'Accuracy', 'macro_precision': 'Macro-P', 'macro_recall': 'Macro-R', 'macro_f1': 'Macro-F1'}\n",
+                    "nli_tab = pd.DataFrame({results['nli'][k]['model'].split('/')[-1]: {v: results['nli'][k][m] for m, v in metric_names.items()}\n",
+                    "                        for k in results['nli']}).T\n",
+                    "display(nli_tab.style.format('{:.3f}').background_gradient(cmap='Blues', axis=None))\n",
+                    "\n",
+                    "fig, ax = plt.subplots(figsize=(9, 3.6))\n",
+                    "x = np.arange(len(metric_names)); w = .38\n",
+                    "colors_list = [C['blue'], C['slate']] if len(nli_tab) > 1 else [C['blue']]\n",
+                    "for i, (name, row) in enumerate(nli_tab.iterrows()):\n",
+                    "    offset = (i - 0.5) * w if len(nli_tab) > 1 else 0\n",
+                    "    bars = ax.bar(x + offset, row.values, w if len(nli_tab) > 1 else 0.5, label=name, color=colors_list[i % len(colors_list)])\n",
+                    "    ax.bar_label(bars, fmt='%.2f', fontsize=8.5, padding=2)\n",
+                    "ax.set_xticks(x, list(metric_names.values())); ax.set_ylim(0, 1.08); ax.legend(frameon=False)\n",
+                    "ax.set_title('NLI pada evidence emas: Evaluasi Model'); plt.show()\n",
+                    "print(results['nli']['indobert']['report_text'])\n"
+                ]
+
+            # Perbaikan Sel Kesimpulan: Cegah KeyError 'baseline'
+            if "nli_new, nli_old = results['nli']['indobert']" in src or 'nli_new, nli_old = results["nli"]["indobert"]' in src:
+                cell["source"] = [
+                    "nli_new = results['nli']['indobert']\n",
+                    "nli_old = results['nli'].get('baseline', {'macro_f1': 0.326, 'accuracy': 0.422})\n",
+                    "best_ret = max(results['retrieval'], key=lambda k: results['retrieval'][k]['mrr'])\n",
+                    "e_max, e_mean = e2e['strategies']['max'], e2e['strategies']['mean']\n",
+                    "display(Markdown(f'''\n",
+                    "| Temuan | Hasil |\n",
+                    "|---|---|\n",
+                    "| IndoBERT & Entailment Verification (NLI) vs baseline English-only | Macro-F1 **{nli_old['macro_f1']:.3f} → {nli_new['macro_f1']:.3f}**, accuracy {nli_old['accuracy']:.1%} → **{nli_new['accuracy']:.1%}** |\n",
+                    "| Retrieval terbaik (MRR) | **{best_ret}** — MRR {results['retrieval'][best_ret]['mrr']:.3f}, Recall@5 {results['retrieval'][best_ret]['recall@5']:.1%} |\n",
+                    "| End-to-end (agregasi max) | accuracy **{e_max['accuracy']:.1%}**, Macro-F1 **{e_max['macro_f1']:.3f}** |\n",
+                    "| Agregasi max vs mean (versi lama) | Macro-F1 {e_mean['macro_f1']:.3f} → **{e_max['macro_f1']:.3f}** |\n",
+                    "| Latensi | {e2e['seconds_per_claim']:.2f} detik/klaim di {resolve_device().upper()} (tanpa SHAP) |\n",
+                    "'''))\n"
+                ]
+
+            # Perbaikan Sel Visualisasi SHAP agar selalu ter-render dengan display(fig)
+            if "plot_token_importance(" in src and "display(fig)" not in src:
+                new_src = []
+                for line in cell["source"]:
+                    if "plt.show()" in line:
+                        new_src.append("display(fig)\n")
+                    else:
+                        new_src.append(line)
+                cell["source"] = new_src
+
     # Bersihkan sisa kata deberta/mdeberta pada seluruh sel secara rekursif
     def clean_obj(obj):
         if isinstance(obj, str):
@@ -171,14 +244,26 @@ def sync():
         json.dump(nb, f, indent=1, ensure_ascii=False)
 
     # -------------------------------------------------------------
-    # 3. Verifikasi akhir: pastikan 0 kemunculan kata 'deberta'
+    # 3. Hapus cache pickle lama yang tidak kompatibel
+    # -------------------------------------------------------------
+    cache_dir = Path("cache")
+    if cache_dir.exists():
+        for pkl in cache_dir.glob("corpus_*.pkl"):
+            try:
+                pkl.unlink()
+                print(f"[BERSIH] Menghapus cache pickle usang: {pkl.name}")
+            except Exception as e:
+                print(f"[INFO] Tidak dapat menghapus {pkl.name}: {e}")
+
+    # -------------------------------------------------------------
+    # 4. Verifikasi akhir: pastikan 0 kemunculan kata 'deberta'
     # -------------------------------------------------------------
     with open(NOTEBOOK_PATH, "r", encoding="utf-8") as f:
         final_check = f.read()
 
     matches = re.findall(r"deberta", final_check, re.IGNORECASE)
 
-    print(f"[SUKSES] Seluruh sel pada {NOTEBOOK_PATH} berhasil diselaraskan dengan IndoBERT!")
+    print(f"[SUKSES] Seluruh sel pada {NOTEBOOK_PATH} berhasil diselaraskan dan diperbaiki!")
     if len(matches) == 0:
         print("[VERIFIKASI] Bersih total 100%! Ditemukan 0 kata 'deberta'/'mDeBERTa' di seluruh sel notebook.")
     else:

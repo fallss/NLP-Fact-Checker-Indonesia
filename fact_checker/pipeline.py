@@ -47,13 +47,30 @@ def load_corpus(cfg: Config) -> pd.DataFrame:
     key = f"{path.resolve()}|{stat.st_size}|{int(stat.st_mtime)}|{cfg.max_articles}|v{PREPROCESS_VERSION}"
     cache_file = Path(cfg.cache_dir) / f"corpus_{hashlib.sha1(key.encode()).hexdigest()[:12]}.pkl"
     if cache_file.exists():
-        logger.info("Korpus dimuat dari cache: %s", cache_file.name)
-        return pd.read_pickle(cache_file)
+        try:
+            logger.info("Korpus dimuat dari cache: %s", cache_file.name)
+            df = pd.read_pickle(cache_file)
+            return df
+        except (Exception, NotImplementedError) as e:
+            logger.warning("Cache pickle tidak kompatibel (%s), membuat ulang dari %s: %s", cache_file.name, path.name, e)
+            try:
+                cache_file.unlink(missing_ok=True)
+            except Exception:
+                pass
 
     logger.info("Memuat & membersihkan dataset: %s", path)
     df = load_articles(path, max_rows=cfg.max_articles)
+    
+    # Konversi kolom bertipe string ke object murni agar kompatibel lintas versi pandas / pyarrow
+    for col in df.columns:
+        if str(df[col].dtype).startswith("string") or df[col].dtype == object:
+            df[col] = df[col].astype(object)
+
     cache_file.parent.mkdir(parents=True, exist_ok=True)
-    df.to_pickle(cache_file)
+    try:
+        df.to_pickle(cache_file, protocol=4)
+    except Exception as e:
+        logger.warning("Gagal menyimpan cache pickle: %s", e)
     logger.info("Korpus: %d artikel bersih (cache: %s)", len(df), cache_file.name)
     return df
 
