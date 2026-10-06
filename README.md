@@ -24,7 +24,7 @@ Diberikan sebuah klaim, sistem akan:
               └───────────────────────────────────────────────┬───────────────────────────────┘
                                                               ▼
               ┌──── Tahap 2: Passage Selection ────┐   ┌──── Tahap 3: IndoBERT & Entailment ──┐
-              │ artikel → passage 3 kalimat        │──▶│ IndoBERT NLI / mDeBERTa-v3           │
+              │ artikel → passage 3 kalimat        │──▶│ IndoBERT NLI (IndoBenchmark)         │
               │ (sliding window), urut cosine sim  │   │ premise = passage, hypothesis = klaim│
               └────────────────────────────────────┘   └──────────────────┬───────────────────┘
                                                                           ▼
@@ -41,7 +41,7 @@ Diberikan sebuah klaim, sistem akan:
 | Sparse retrieval | Okapi BM25 (implementasi vektor, matriks sparse SciPy) |
 | Dense retrieval | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` |
 | Fusion | Reciprocal Rank Fusion (Cormack et al., 2009) |
-| NLI & Verifikasi | `LazarusNLP/indobert-lite-base-p1-indonli-multilingual-nli-distil-mdeberta` (IndoBERT NLI) & `MoritzLaurer/mDeBERTa-v3-base-xnli` |
+| NLI & Verifikasi | `LazarusNLP/indobert-lite-base-p1-indonli` (IndoBERT NLI ter-fine-tune benchmark IndoNLI) |
 | Explainability | SHAP (Partition Explainer) + fallback occlusion |
 | Antarmuka | CLI (`rich`), Web App (`gradio`), Jupyter Notebook |
 
